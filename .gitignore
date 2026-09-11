@@ -3,3 +3,6 @@ dist/
 .astro/
 build-log.txt
 .wrangler/
+.env
+.env.*
+!.env.example

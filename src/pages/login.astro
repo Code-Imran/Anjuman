@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sign in | Anjuman-I-Islam" description="Sign in to the Anjuman-I-Islam administration area.">
+  <main class="flex min-h-screen items-center justify-center px-6 py-16">
+    <section class="w-full max-w-md border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
+      <a href="/" class="text-sm text-amber-300 hover:text-amber-200">&lt;- Back to website</a>
+      <div class="mt-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">Administration</p>
+        <h1 class="mt-3 text-3xl font-bold text-white">Sign in</h1>
+        <p class="mt-3 text-sm leading-6 text-slate-400">Use your Supabase account to access the administration area.</p>
+      </div>
+
+      <form id="auth-form" class="mt-8 space-y-5">
+        <label class="block text-sm font-medium text-slate-200" for="email">
+          Email address
+          <input id="email" name="email" type="email" autocomplete="email" required class="mt-2 w-full border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-amber-400" />
+        </label>
+        <label class="block text-sm font-medium text-slate-200" for="password">
+          Password
+          <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required class="mt-2 w-full border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-amber-400" />
+        </label>
+        <button id="submit-button" type="submit" class="w-full bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">Sign in</button>
+        <button id="signup-button" type="button" class="w-full border border-slate-700 px-5 py-3 font-semibold text-slate-200 hover:border-amber-400 hover:text-amber-300">Create account</button>
+        <p id="auth-message" class="min-h-6 text-sm" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    import { supabase } from '../lib/supabase';
+
+    const form = document.querySelector('#auth-form');
+    const emailInput = document.querySelector('#email');
+    const passwordInput = document.querySelector('#password');
+    const message = document.querySelector('#auth-message');
+    const submitButton = document.querySelector('#submit-button');
+    const signupButton = document.querySelector('#signup-button');
+
+    const showMessage = (text, isError = false) => {
+      message.textContent = text;
+      message.className = `min-h-6 text-sm ${isError ? 'text-rose-300' : 'text-emerald-300'}`;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      submitButton.disabled = true;
+      showMessage('Signing in...');
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email: emailInput.value,
+        password: passwordInput.value
+      });
+
+      submitButton.disabled = false;
+      if (error) {
+        showMessage(error.message, true);
+        return;
+      }
+
+      showMessage('Signed in successfully.');
+      window.location.href = '/admin';
+    });
+
+    signupButton.addEventListener('click', async () => {
+      signupButton.disabled = true;
+      showMessage('Creating account...');
+
+      const { error } = await supabase.auth.signUp({
+        email: emailInput.value,
+        password: passwordInput.value
+      });
+
+      signupButton.disabled = false;
+      showMessage(error ? error.message : 'Account created. Check your email to confirm it.', Boolean(error));
+    });
+  </script>
+</BaseLayout>
