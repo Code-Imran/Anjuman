@@ -1,0 +1,43 @@
+---
+const currentPath = Astro.url.pathname;
+const navigation = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Admissions', href: '/admission-requirements' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="Anjuman-I-Islam home">
+      <span class="site-brand__mark">AI</span>
+      <span>
+        <span class="site-brand__eyebrow">Panchgani, Maharashtra</span>
+        <strong>Anjuman-I-Islam</strong>
+      </span>
+    </a>
+
+    <button class="site-menu-button" type="button" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="site-navigation" class="site-navigation" aria-label="Primary navigation">
+      {navigation.map((item) => (
+        <a class:list={{ active: currentPath === item.href }} href={item.href}>{item.label}</a>
+      ))}
+      <a class="site-navigation__cta" href="/login">Staff login</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector('.site-menu-button');
+  const navigation = document.querySelector('#site-navigation');
+
+  menuButton?.addEventListener('click', () => {
+    const isOpen = navigation?.classList.toggle('is-open') ?? false;
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
+</script>
