@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Admissions | Anjuman-I-Islam Public School & Jr. College"
+  description="Learn about admissions at Anjuman-I-Islam Public School and Jr. College in Panchgani."
+>
+  <header class="border-b border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+      <a href="/" class="font-semibold text-white">Anjuman-I-Islam</a>
+      <nav class="flex gap-5 text-sm text-slate-300" aria-label="Primary navigation">
+        <a class="hover:text-amber-300" href="/">Home</a>
+        <a class="hover:text-amber-300" href="/about">About</a>
+        <a class="text-amber-300" href="/admission-requirements">Admissions</a>
+        <a class="hover:text-amber-300" href="/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-5xl px-6 py-16">
+    <div class="max-w-3xl">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">Join our community</p>
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Admissions</h1>
+      <p class="mt-6 text-xl leading-8 text-slate-300">
+        We welcome students who are ready to learn, grow, and contribute to a thoughtful school community in Panchgani.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-10 md:grid-cols-2">
+      <section class="border border-slate-800 bg-slate-900/70 p-6">
+        <h2 class="text-2xl font-semibold text-white">What to prepare</h2>
+        <ul class="mt-6 space-y-4 text-slate-300">
+          <li class="border-l-2 border-amber-400 pl-4">Completed admission enquiry or application form</li>
+          <li class="border-l-2 border-amber-400 pl-4">Recent academic records and transfer certificate, where applicable</li>
+          <li class="border-l-2 border-amber-400 pl-4">Student identity and date-of-birth documents</li>
+          <li class="border-l-2 border-amber-400 pl-4">Recent passport-sized photographs</li>
+          <li class="border-l-2 border-amber-400 pl-4">Any programme-specific documents requested by the school office</li>
+        </ul>
+      </section>
+
+      <section class="border border-slate-800 bg-slate-900/70 p-6">
+        <h2 class="text-2xl font-semibold text-white">Our process</h2>
+        <ol class="mt-6 space-y-5 text-slate-300">
+          <li><span class="mr-3 font-bold text-amber-400">01</span>Contact the school office to discuss availability and eligibility.</li>
+          <li><span class="mr-3 font-bold text-amber-400">02</span>Submit the completed form and supporting documents.</li>
+          <li><span class="mr-3 font-bold text-amber-400">03</span>Attend any required interaction, assessment, or interview.</li>
+          <li><span class="mr-3 font-bold text-amber-400">04</span>Complete confirmation and enrolment formalities.</li>
+        </ol>
+      </section>
+    </div>
+
+    <section class="mt-10 border-t border-slate-800 pt-10">
+      <h2 class="text-2xl font-semibold text-white">Start an enquiry</h2>
+      <p class="mt-3 max-w-2xl leading-7 text-slate-300">
+        Requirements and dates can vary by class and academic year. Our office team can provide the latest guidance for your student.
+      </p>
+      <a class="mt-6 inline-block bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300" href="/contact">Contact the school office</a>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-500">
+    &copy; {new Date().getFullYear()} Anjuman-I-Islam Public School & Jr. College, Panchgani.
+  </footer>
+</BaseLayout>

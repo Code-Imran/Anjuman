@@ -43,37 +43,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       message.className = `min-h-6 text-sm ${isError ? 'text-rose-300' : 'text-emerald-300'}`;
     };
 
+    const requireSupabase = () => {
+      if (supabase) {
+        return true;
+      }
+
+      showMessage('Authentication is not configured yet. Add the Supabase keys to the environment.', true);
+      return false;
+    };
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (!requireSupabase()) return;
       submitButton.disabled = true;
       showMessage('Signing in...');
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email: emailInput.value,
-        password: passwordInput.value
-      });
+      try {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: emailInput.value,
+          password: passwordInput.value
+        });
 
-      submitButton.disabled = false;
-      if (error) {
-        showMessage(error.message, true);
-        return;
+        if (error) {
+          showMessage(error.message, true);
+          return;
+        }
+
+        showMessage('Signed in successfully.');
+        window.location.href = '/admin';
+      } catch (error) {
+        showMessage(error instanceof Error ? error.message : 'Unable to sign in right now.', true);
+      } finally {
+        submitButton.disabled = false;
       }
-
-      showMessage('Signed in successfully.');
-      window.location.href = '/admin';
     });
 
     signupButton.addEventListener('click', async () => {
+      if (!requireSupabase()) return;
       signupButton.disabled = true;
       showMessage('Creating account...');
 
-      const { error } = await supabase.auth.signUp({
-        email: emailInput.value,
-        password: passwordInput.value
-      });
+      try {
+        const { error } = await supabase.auth.signUp({
+          email: emailInput.value,
+          password: passwordInput.value
+        });
 
-      signupButton.disabled = false;
-      showMessage(error ? error.message : 'Account created. Check your email to confirm it.', Boolean(error));
+        showMessage(error ? error.message : 'Account created. Check your email to confirm it.', Boolean(error));
+      } catch (error) {
+        showMessage(error instanceof Error ? error.message : 'Unable to create the account right now.', true);
+      } finally {
+        signupButton.disabled = false;
+      }
     });
   </script>
 </BaseLayout>
