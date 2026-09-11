@@ -52,15 +52,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       return false;
     };
 
+    const validateForm = () => {
+      if (form.checkValidity()) {
+        return true;
+      }
+
+      form.reportValidity();
+      return false;
+    };
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!requireSupabase()) return;
+      if (!validateForm() || !requireSupabase()) return;
       submitButton.disabled = true;
       showMessage('Signing in...');
 
       try {
         const { error } = await supabase.auth.signInWithPassword({
-          email: emailInput.value,
+          email: emailInput.value.trim(),
           password: passwordInput.value
         });
 
@@ -79,17 +88,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
 
     signupButton.addEventListener('click', async () => {
-      if (!requireSupabase()) return;
+      if (!validateForm() || !requireSupabase()) return;
       signupButton.disabled = true;
       showMessage('Creating account...');
 
       try {
-        const { error } = await supabase.auth.signUp({
-          email: emailInput.value,
+        const { data, error } = await supabase.auth.signUp({
+          email: emailInput.value.trim(),
           password: passwordInput.value
         });
 
-        showMessage(error ? error.message : 'Account created. Check your email to confirm it.', Boolean(error));
+        if (error) {
+          showMessage(error.message, true);
+          return;
+        }
+
+        if (data.session) {
+          showMessage('Account created. Redirecting...');
+          window.location.href = '/admin';
+          return;
+        }
+
+        showMessage('Account created. Check your email to confirm it.');
       } catch (error) {
         showMessage(error instanceof Error ? error.message : 'Unable to create the account right now.', true);
       } finally {
