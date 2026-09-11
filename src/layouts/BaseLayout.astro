@@ -1,0 +1,25 @@
+﻿---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Anjuman-I-Islam Public School & Jr. College", 
+  description = "Panchgani, Maharashtra - Excellence in Education" 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-900 text-white min-h-screen flex flex-col justify-between">
+    <slot />
+  </body>
+</html>

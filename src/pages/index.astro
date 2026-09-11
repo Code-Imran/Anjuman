@@ -1,0 +1,29 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+---
+
+<BaseLayout title="Anjuman-I-Islam Public School & Jr. College">
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="text-center max-w-2xl bg-slate-800/60 p-10 rounded-2xl border border-slate-700 shadow-2xl backdrop-blur-sm">
+      <span class="inline-block px-4 py-1 mb-4 text-xs font-semibold tracking-wider text-amber-400 uppercase bg-amber-400/10 rounded-full border border-amber-400/20">
+        Established Heritage
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+        Anjuman-I-Islam Public School &amp; Jr. College
+      </h1>
+      <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+        Panchgani, Maharashtra &bull; Fostering Academic Excellence &amp; Character
+      </p>
+      
+      <div class="border-t border-slate-700/80 pt-6">
+        <p class="text-xs uppercase tracking-widest text-slate-400 mb-4 font-semibold">Connect With Us</p>
+        <SocialIcons />
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-xs text-slate-500 border-t border-slate-800">
+    &copy; {new Date().getFullYear()} Anjuman-I-Islam Public School &amp; Jr. College, Panchgani. All rights reserved.
+  </footer>
+</BaseLayout>
