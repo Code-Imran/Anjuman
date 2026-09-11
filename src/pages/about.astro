@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About Us | Anjuman-I-Islam Public School & Jr. College"
+  description="Learn about Anjuman-I-Islam Public School and Jr. College in Panchgani."
+>
+  <header class="border-b border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+      <a href="/" class="font-semibold text-white">Anjuman-I-Islam</a>
+      <nav class="flex gap-5 text-sm text-slate-300" aria-label="Primary navigation">
+        <a class="hover:text-amber-300" href="/">Home</a>
+        <a class="text-amber-300" href="/about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-5xl px-6 py-16">
+    <div class="max-w-3xl">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">Our story</p>
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Anjuman-I-Islam</h1>
+      <p class="mt-6 text-xl leading-8 text-slate-300">
+        Education goes beyond textbooks and classrooms. We empower students to explore their passions,
+        challenge conventions, and discover their potential through meaningful experiences.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-8 md:grid-cols-[minmax(0,1fr)_18rem]">
+      <article class="space-y-8 text-base leading-8 text-slate-300">
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-white">A place to grow</h2>
+          <p>
+            Anjuman-I-Islam Public School and Jr. College offers a supportive learning environment where
+            academic excellence meets character, curiosity, and confidence. Our faculty guide students with
+            care while connecting classroom learning to the world beyond school.
+          </p>
+          <p class="mt-4">
+            Based in Panchgani, Maharashtra, our community is committed to helping every student build a
+            strong foundation for further study, meaningful work, and responsible citizenship.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-3 text-2xl font-semibold text-white">Our mission</h2>
+          <p>
+            To provide transformative education that develops critical thinking, creativity, compassion, and
+            character, equipping every student with the knowledge and values needed to contribute meaningfully
+            to society.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-2xl font-semibold text-white">What sets us apart</h2>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            <li class="border-l-2 border-amber-400 pl-4">Dedicated teachers and personal guidance</li>
+            <li class="border-l-2 border-amber-400 pl-4">Learning that connects theory to practice</li>
+            <li class="border-l-2 border-amber-400 pl-4">A welcoming, inclusive school community</li>
+            <li class="border-l-2 border-amber-400 pl-4">Opportunities for creativity and leadership</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="h-fit border border-slate-800 bg-slate-900/70 p-6">
+        <h2 class="text-lg font-semibold text-white">Explore Anjuman</h2>
+        <div class="mt-5 grid gap-3 text-sm">
+          <a class="text-amber-300 hover:text-amber-200" href="/">Return to home <span aria-hidden="true">-&gt;</span></a>
+          <a class="text-amber-300 hover:text-amber-200" href="/admission-requirements">Admissions <span aria-hidden="true">-&gt;</span></a>
+          <a class="text-amber-300 hover:text-amber-200" href="/contact">Contact us <span aria-hidden="true">-&gt;</span></a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-500">
+    &copy; {new Date().getFullYear()} Anjuman-I-Islam Public School & Jr. College, Panchgani.
+  </footer>
+</BaseLayout>
