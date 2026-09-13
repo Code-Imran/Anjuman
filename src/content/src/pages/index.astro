@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import SchoolGlance from '../components/SchoolGlance.astro';
+import Leadership from '../components/Leadership.astro';
+import NewsSection from '../components/NewsSection.astro';
+import AcademicWings from '../components/AcademicWings.astro';
+import Heritage from '../components/Heritage.astro';
+import VirtualTour from '../components/VirtualTour.astro';
+import CoCurricular from '../components/CoCurricular.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+import AdmissionsCTA from '../components/AdmissionsCTA.astro';
+import Footer from '../components/Footer.astro';
+import FloatingSocial from '../components/FloatingSocial.astro';
+import { reader } from '../lib/keystatic-reader';
+
+// SEO defaults (not yet CMS-managed - could be added to siteSettings later if wanted)
+const metaTitle = "Anjuman-I-Islam Public School & Jr. College, Panchgani";
+const metaDescription = "Premier English Medium Residential Co-Ed Boarding School in Panchgani since 1920. Academic excellence, equestrian sports, and holistic character building.";
+const keywords = ["Anjuman Panchgani", "Residential School Panchgani", "Boarding School Maharashtra", "ICSE School"];
+
+// Contact info now comes from the CMS (src/content/site-settings) - only used here
+// for the components (AdmissionsCTA, FloatingSocial) that aren't part of Header/Footer.
+const settings = await reader.singletons.siteSettings.read();
+const contactPhone1 = settings?.phone1 ?? "";
+---
+
+<Layout
+  title={metaTitle}
+  metaTitle={metaTitle}
+  description={metaDescription}
+  metaDescription={metaDescription}
+  keywords={keywords}
+>
+  <Header />
+
+  <HeroSlider />
+
+  <SchoolGlance />
+
+  <Leadership />
+
+  <NewsSection />
+
+  <AcademicWings />
+
+  <Heritage />
+
+  <VirtualTour />
+
+  <CoCurricular />
+
+  <Testimonials />
+
+  <ImageGallery />
+
+  <AdmissionsCTA phone={contactPhone1} />
+
+  <Footer />
+
+  <FloatingSocial phone={contactPhone1} />
+</Layout>

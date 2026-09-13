@@ -1,0 +1,50 @@
+---
+import { reader } from '../lib/keystatic-reader';
+
+interface Props {
+  phone1?: string;
+  phone2?: string;
+  email?: string;
+}
+
+const settings = await reader.singletons.siteSettings.read();
+
+const {
+  phone1 = settings?.phone1 ?? '',
+  phone2 = settings?.phone2 ?? '',
+  email = settings?.email ?? '',
+} = Astro.props;
+
+const tagline =
+  settings?.footerTagline ??
+  'Anjuman-I-Islam Public School & Jr. College, Panchgani — Maharashtra, India, since 1920.';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 border-t border-slate-800 pt-12 pb-6 px-6">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8 text-sm text-slate-400">
+    <div>
+      <p class="font-serif text-lg text-white">Anjuman-I-Islam</p>
+      <p class="mt-2">{tagline}</p>
+    </div>
+
+    <div>
+      <p class="text-white font-medium mb-2">Contact</p>
+      {phone1 && <p><a href={`tel:${phone1}`} class="hover:text-amber-400">{phone1}</a></p>}
+      {phone2 && <p><a href={`tel:${phone2}`} class="hover:text-amber-400">{phone2}</a></p>}
+      {email && <p><a href={`mailto:${email}`} class="hover:text-amber-400">{email}</a></p>}
+    </div>
+
+    <div>
+      <p class="text-white font-medium mb-2">Explore</p>
+      <p><a href="/about" class="hover:text-amber-400">About</a></p>
+      <p><a href="/admission-requirements" class="hover:text-amber-400">Admissions</a></p>
+      <p><a href="/contact" class="hover:text-amber-400">Contact</a></p>
+    </div>
+  </div>
+
+  <p class="mt-10 text-center text-xs text-slate-600">
+    © {year} Anjuman-I-Islam Public School & Jr. College. All rights reserved.
+  </p>
+</footer>

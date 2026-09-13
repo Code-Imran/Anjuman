@@ -1,0 +1,43 @@
+---
+import { reader } from '../lib/keystatic-reader';
+
+interface GalleryItem {
+  src: string;
+  alt: string;
+  title: string;
+  category: string;
+}
+interface Props {
+  items?: GalleryItem[];
+}
+
+let { items } = Astro.props;
+
+if (!items) {
+  const entries = await reader.collections.gallery.all();
+  items = entries.map((e) => ({
+    src: e.entry.image,
+    alt: e.entry.alt,
+    title: e.entry.title,
+    category: e.entry.category,
+  }));
+}
+---
+
+<section class="py-16 px-6 bg-slate-950">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Campus Gallery</h2>
+
+    <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {items.map((item) => (
+        <figure class="relative rounded-lg overflow-hidden group">
+          <img src={item.src} alt={item.alt} class="w-full h-56 object-cover" onerror="this.style.display='none'" />
+          <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-slate-950/90 to-transparent">
+            <p class="text-xs text-amber-400">{item.category}</p>
+            <p class="text-white text-sm">{item.title}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

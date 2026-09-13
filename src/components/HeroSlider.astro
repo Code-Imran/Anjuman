@@ -1,0 +1,86 @@
+---
+const slides = [
+  {
+    image: "/images/hero/Anjuman Public School Panchgani.webp",
+    heading: "A century of learning in the hills",
+    sub: "Residential Co-Ed Boarding School, Panchgani — since 1920",
+  },
+  {
+    image: "/images/hero/Anjuman-junior-college-Panchgani.webp",
+    heading: "Academic distinction, holistic character",
+    sub: "ICSE curriculum with a legacy of disciplined excellence",
+  },
+  {
+    image: "/images/hero/Astronomy-Club.webp",
+    heading: "Beyond the classroom",
+    sub: "Equestrian sport, astronomy, and the hill-station life",
+  },
+];
+---
+
+<section class="relative h-[70vh] min-h-[420px] overflow-hidden bg-slate-950" aria-label="Highlights">
+  <div id="hero-slides" class="absolute inset-0">
+    {slides.map((slide, i) => (
+      <div
+        class="hero-slide absolute inset-0 transition-opacity duration-1000"
+        style={`opacity:${i === 0 ? 1 : 0}`}
+        data-index={i}
+      >
+        <img
+          src={slide.image}
+          alt={slide.heading}
+          class="w-full h-full object-cover"
+          onerror="this.style.display='none'"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/10"></div>
+        <div class="absolute inset-0 flex flex-col items-start justify-center px-8 md:px-16 max-w-3xl">
+          <h1 class="font-serif text-3xl md:text-5xl text-white leading-tight">{slide.heading}</h1>
+          <p class="mt-4 text-slate-200 text-base md:text-lg">{slide.sub}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="absolute bottom-6 left-8 md:left-16 flex gap-2">
+    {slides.map((_, i) => (
+      <button
+        class="hero-dot h-2 w-2 rounded-full bg-white/40 data-[active=true]:bg-amber-400 data-[active=true]:w-6 transition-all"
+        data-goto={i}
+        data-active={i === 0}
+        aria-label={`Go to slide ${i + 1}`}
+      ></button>
+    ))}
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+  const dots = document.querySelectorAll<HTMLElement>('.hero-dot');
+  let current = 0;
+  let timer: number;
+
+  function show(index: number) {
+    slides.forEach((s, i) => (s.style.opacity = i === index ? '1' : '0'));
+    dots.forEach((d, i) => d.setAttribute('data-active', String(i === index)));
+    current = index;
+  }
+
+  function next() {
+    show((current + 1) % slides.length);
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = Number(dot.getAttribute('data-goto'));
+      show(idx);
+      resetTimer();
+    });
+  });
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = window.setInterval(next, 6000);
+  }
+
+  resetTimer();
+</script>

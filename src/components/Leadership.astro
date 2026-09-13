@@ -1,0 +1,39 @@
+---
+const leaders = [
+  {
+    name: "The Chairman",
+    role: "Chairman, Anjuman-I-Islam",
+    image: "/images/leadership/chairman.jpg",
+    note: "Guiding the institution's academic and administrative vision.",
+  },
+  {
+    name: "The President",
+    role: "President, Anjuman-I-Islam",
+    image: "/images/leadership/president.jpeg",
+    note: "Overseeing the school's century-long commitment to education.",
+  },
+];
+---
+
+<section class="py-16 px-6 max-w-6xl mx-auto">
+  <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Leadership</h2>
+  <p class="mt-2 text-slate-400 text-center max-w-xl mx-auto">
+    Stewarding a century of academic tradition in the hills of Panchgani.
+  </p>
+
+  <div class="mt-10 grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+    {leaders.map((leader) => (
+      <div class="text-center">
+        <img
+          src={leader.image}
+          alt={leader.name}
+          class="w-32 h-32 mx-auto rounded-full object-cover border-2 border-amber-600"
+          onerror="this.style.display='none'"
+        />
+        <h3 class="mt-4 font-serif text-lg text-white">{leader.name}</h3>
+        <p class="text-amber-400 text-sm">{leader.role}</p>
+        <p class="mt-2 text-slate-400 text-sm">{leader.note}</p>
+      </div>
+    ))}
+  </div>
+</section>

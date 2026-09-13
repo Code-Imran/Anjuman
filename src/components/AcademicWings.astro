@@ -1,0 +1,23 @@
+---
+const wings = [
+  { title: "Primary Wing", desc: "Foundational years building curiosity, discipline, and literacy." },
+  { title: "Secondary Wing", desc: "ICSE-board preparation with focused academic mentorship." },
+  { title: "Junior College", desc: "Pre-university pathways across Science, Commerce, and Arts." },
+];
+---
+
+<section class="py-16 px-6 max-w-6xl mx-auto">
+  <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Academic Wings</h2>
+  <p class="mt-2 text-slate-400 text-center max-w-xl mx-auto">
+    A continuous academic path from primary school through junior college.
+  </p>
+
+  <div class="mt-10 grid sm:grid-cols-3 gap-6">
+    {wings.map((wing) => (
+      <div class="p-6 rounded-lg border border-slate-800 bg-slate-900">
+        <h3 class="font-serif text-lg text-amber-400">{wing.title}</h3>
+        <p class="mt-2 text-sm text-slate-400">{wing.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>

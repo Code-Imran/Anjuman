@@ -1,0 +1,14 @@
+phone1: "8275204302"
+phone2: "8275205404"
+email: anjumanpanchgani@gmail.com
+navLinks:
+  - label: Home
+    href: /
+  - label: About
+    href: /about
+  - label: Admissions
+    href: /admission-requirements
+  - label: Contact
+    href: /contact
+footerTagline: >-
+  Anjuman-I-Islam Public School & Jr. College, Panchgani — Maharashtra, India, since 1920.

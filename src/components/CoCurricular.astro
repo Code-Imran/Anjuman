@@ -1,0 +1,26 @@
+---
+const activities = [
+  { title: "Equestrian Sport", desc: "Dedicated horse-riding tracks, part of campus tradition." },
+  { title: "Athletics", desc: "Expansive sporting grounds and a fully equipped gymnasium." },
+  { title: "Astronomy Club", desc: "Stargazing and science exploration beyond the syllabus." },
+  { title: "Music Room", desc: "Instrumental and vocal training for students of all ages." },
+];
+---
+
+<section class="py-16 px-6 bg-slate-950">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Co-Curricular Life</h2>
+    <p class="mt-2 text-slate-400 text-center max-w-xl mx-auto">
+      Holistic development beyond the classroom.
+    </p>
+
+    <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {activities.map((a) => (
+        <div class="p-5 rounded-lg border border-slate-800 bg-slate-900 text-center">
+          <h3 class="font-serif text-base text-amber-400">{a.title}</h3>
+          <p class="mt-2 text-sm text-slate-400">{a.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

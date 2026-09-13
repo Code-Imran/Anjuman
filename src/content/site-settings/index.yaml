@@ -1,0 +1,9 @@
+﻿phone1: "+91 00000 00000"
+phone2: ""
+email: "info@anjuman.edu"
+navLinks:
+  - label: "Home"
+    href: "/"
+  - label: "About"
+    href: "/about"
+footerTagline: "Anjuman Educational Institution, Panchgani, Maharashtra"
