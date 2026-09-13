@@ -1,14 +1,49 @@
 ---
+const videoId = "2t9dxv4W6J4";
+const startTime = 15;
+// rel=0 restricts related videos to the same channel; modestbranding=1 simplifies UI
+const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?start=${startTime}&rel=0&modestbranding=1`;
 ---
 
-<section class="py-16 px-6 max-w-5xl mx-auto text-center">
-  <h2 class="font-serif text-2xl md:text-3xl text-white">Take a Virtual Tour</h2>
-  <p class="mt-2 text-slate-400 max-w-xl mx-auto">
-    Explore the campus, hostels, and grounds from wherever you are.
-  </p>
+<section class="py-20 px-6 bg-[#0b2015] border-y border-[#1a4230]" aria-label="Campus Virtual Tour">
+  <div class="max-w-5xl mx-auto text-center">
+    
+    <!-- Header -->
+    <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#f7d070] bg-white/[0.06] border border-white/10 px-3 py-1 rounded mb-3">
+      Experience Our Campus
+    </span>
+    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+      Take a Virtual Tour of Anjuman Public School
+    </h2>
+    <p class="mt-3 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+      Explore the scenic 275,186 sq. meters campus, boarding hostels, modern science laboratories, and serene hill-station environment in Panchgani.
+    </p>
 
-  <div class="mt-8 rounded-lg overflow-hidden border border-slate-800 aspect-video bg-slate-900 flex items-center justify-center">
-    <!-- Replace src with an actual campus tour video/embed URL when available -->
-    <p class="text-slate-500 text-sm">Campus tour video coming soon</p>
+    <!-- 16:9 Video Frame -->
+    <div class="mt-10 rounded-none border-2 border-[#c28b1e] overflow-hidden aspect-video bg-black shadow-[0_20px_45px_rgba(0,0,0,0.5)] relative">
+      <iframe
+        class="w-full h-full absolute inset-0"
+        src={embedUrl}
+        title="Take a Virtual Tour of Anjuman Public School Panchgani"
+        loading="lazy"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Footnote details -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-[#9bb3a6]">
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-[#c28b1e]"></span> Full HD Campus Walkthrough
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-[#c28b1e]"></span> Residential Facilities & Hostels
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-[#c28b1e]"></span> Sports & Equestrian Grounds
+      </span>
+    </div>
+
   </div>
 </section>

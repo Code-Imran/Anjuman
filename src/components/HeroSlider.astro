@@ -2,49 +2,78 @@
 const slides = [
   {
     image: "/images/hero/Anjuman Public School Panchgani.webp",
-    heading: "A century of learning in the hills",
-    sub: "Residential Co-Ed Boarding School, Panchgani — since 1920",
+    heading: "A Century of Learning in the Hills",
+    sub: "English Medium Residential Co-Ed School in Panchgani — Established in 1920",
   },
   {
     image: "/images/hero/Anjuman-junior-college-Panchgani.webp",
-    heading: "Academic distinction, holistic character",
-    sub: "ICSE curriculum with a legacy of disciplined excellence",
+    heading: "Academic Distinction & Holistic Character",
+    sub: "Maharashtra State Board (SSC & HSC) with Integrated NEET, JEE & CET Coaching",
   },
   {
     image: "/images/hero/Astronomy-Club.webp",
-    heading: "Beyond the classroom",
-    sub: "Equestrian sport, astronomy, and the hill-station life",
+    heading: "Beyond the Classrooms",
+    sub: "Activity-based learning in Robotics, Artificial Intelligence, Aviation & Astronomy",
+  },
+  {
+    image: "/images/hero/hero-4.webp",
+    heading: "Expansive 275,186 Sq. Meters Campus",
+    sub: "Serene hill-station environment designed for physical vitality and focused study",
+  },
+  {
+    image: "/images/hero/hero-5.webp",
+    heading: "Sports, Archery & Equestrian Arena",
+    sub: "Fostering lifelong fitness, discipline, resilience, and sporting prowess",
+  },
+  {
+    image: "/images/hero/hero-6.webp",
+    heading: "A Legacy of 10,000+ Alumni",
+    sub: "Nurturing principled global leaders and lifelong friendships across generations",
   },
 ];
 ---
 
-<section class="relative h-[70vh] min-h-[420px] overflow-hidden bg-slate-950" aria-label="Highlights">
+<section class="relative h-[72vh] min-h-[460px] overflow-hidden bg-slate-950" aria-label="Campus Highlights">
   <div id="hero-slides" class="absolute inset-0">
     {slides.map((slide, i) => (
       <div
-        class="hero-slide absolute inset-0 transition-opacity duration-1000"
+        class={`hero-slide absolute inset-0 transition-opacity duration-1000 ${i === 0 ? 'active' : ''}`}
         style={`opacity:${i === 0 ? 1 : 0}`}
         data-index={i}
       >
-        <img
-          src={slide.image}
-          alt={slide.heading}
-          class="w-full h-full object-cover"
-          onerror="this.style.display='none'"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/10"></div>
-        <div class="absolute inset-0 flex flex-col items-start justify-center px-8 md:px-16 max-w-3xl">
-          <h1 class="font-serif text-3xl md:text-5xl text-white leading-tight">{slide.heading}</h1>
-          <p class="mt-4 text-slate-200 text-base md:text-lg">{slide.sub}</p>
+        <div class="zoom-wrapper w-full h-full">
+          <img
+            src={slide.image}
+            alt={slide.heading}
+            class="hero-img w-full h-full object-cover"
+            onerror="this.src='/images/hero/Anjuman Public School Panchgani.webp'"
+          />
+        </div>
+        
+        <!-- Depth Vignette Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2015] via-[#0b2015]/45 to-transparent"></div>
+        
+        <!-- Slide Content -->
+        <div class="absolute inset-0 flex flex-col items-start justify-end pb-20 md:pb-24 px-6 md:px-16 max-w-4xl">
+          <span class="text-[#f7d070] font-bold text-xs md:text-sm uppercase tracking-widest mb-2">
+            Anjuman-I-Islam Panchgani
+          </span>
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl text-white font-bold leading-tight drop-shadow-md">
+            {slide.heading}
+          </h1>
+          <p class="mt-3 text-slate-200 text-sm sm:text-base md:text-xl font-normal max-w-2xl leading-relaxed">
+            {slide.sub}
+          </p>
         </div>
       </div>
     ))}
   </div>
 
-  <div class="absolute bottom-6 left-8 md:left-16 flex gap-2">
+  <!-- Slide Indicators -->
+  <div class="absolute bottom-8 left-6 md:left-16 z-20 flex gap-2.5">
     {slides.map((_, i) => (
       <button
-        class="hero-dot h-2 w-2 rounded-full bg-white/40 data-[active=true]:bg-amber-400 data-[active=true]:w-6 transition-all"
+        class="hero-dot h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-[#c28b1e] data-[active=true]:w-8 transition-all duration-300"
         data-goto={i}
         data-active={i === 0}
         aria-label={`Go to slide ${i + 1}`}
@@ -53,6 +82,25 @@ const slides = [
   </div>
 </section>
 
+<style>
+  .zoom-wrapper {
+    overflow: hidden;
+  }
+
+  .hero-slide.active .hero-img {
+    animation: cinematicZoom 7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  @keyframes cinematicZoom {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+</style>
+
 <script>
   const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
   const dots = document.querySelectorAll<HTMLElement>('.hero-dot');
@@ -60,7 +108,15 @@ const slides = [
   let timer: number;
 
   function show(index: number) {
-    slides.forEach((s, i) => (s.style.opacity = i === index ? '1' : '0'));
+    slides.forEach((s, i) => {
+      if (i === index) {
+        s.style.opacity = '1';
+        s.classList.add('active');
+      } else {
+        s.style.opacity = '0';
+        s.classList.remove('active');
+      }
+    });
     dots.forEach((d, i) => d.setAttribute('data-active', String(i === index)));
     current = index;
   }
@@ -79,7 +135,7 @@ const slides = [
 
   function resetTimer() {
     clearInterval(timer);
-    timer = window.setInterval(next, 6000);
+    timer = window.setInterval(next, 6500);
   }
 
   resetTimer();

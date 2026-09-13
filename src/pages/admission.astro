@@ -1,0 +1,474 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
+
+const belongingsPartA = [
+  { item: "Personal belongings (essential kits)", qty: "—" },
+  { item: "Blanket Woolen", qty: "01 no" },
+  { item: "Bed sheet Colour", qty: "03 nos" },
+  { item: "Pillowcovers", qty: "04 nos" },
+  { item: "Kurta Payjama (Cream coloured)", qty: "04 nos" },
+  { item: "Colour Shoes / sandal", qty: "01 no" },
+  { item: "Slipper", qty: "01 no" },
+  { item: "Towels (2 Turkish & 3 Cotton)", qty: "05 nos" },
+  { item: "Napkin (Cotton)", qty: "06 nos" },
+  { item: "Vests", qty: "06 nos" },
+  { item: "Underpants", qty: "06 nos" },
+  { item: "Colour clothes (holiday use)", qty: "06 nos" },
+  { item: "Trunk with lock", qty: "01 no" },
+  { item: "Suitcase (small for journey)", qty: "01 no" },
+  { item: "Handkerchiefs", qty: "12 nos" },
+  { item: "Toiletries (Toothpaste, brush, soap, cream, etc.)", qty: "As needed" },
+  { item: "Nail Cutter, Hair oil, Comb, Shoes brush, coloured socks", qty: "As needed" },
+  { item: "Colour Sweater", qty: "02 nos" },
+];
+
+const belongingsPartB = [
+  { item: "Uniform (old student 4 pairs & new student 5 pairs)", qty: "05 Pairs" },
+  { item: "House Jersey / Games Short", qty: "03 Pairs each" },
+  { item: "Track Suit", qty: "01 no" },
+  { item: "Mattress", qty: "01 no" },
+  { item: "Football shoes", qty: "01 no" },
+  { item: "School Sweater (half 2 & full 1)", qty: "01 set" },
+  { item: "Socks", qty: "06 Pair" },
+  { item: "Band Uniform", qty: "01 Pair" },
+  { item: "School Blazer / Ceremonial Uniform", qty: "01 no" },
+  { item: "Counter Pan", qty: "01 no" },
+  { item: "Tie", qty: "02 nos" },
+  { item: "Canvas shoes with Socks (Brown)", qty: "02 nos" },
+  { item: "Black Shoes (Bata) with lace, Shoes Polish and brush", qty: "03 no" },
+  { item: "Duck Back Rain Coat & Gum Boot (Compulsory)", qty: "01 no" },
+  { item: "Belt", qty: "02 nos" },
+  { item: "Night Suits", qty: "03 nos" },
+  { item: "Tag", qty: "100 nos" },
+];
+
+const feesRows = [
+  { section: "Primary & Secondary", sundry: "Rs. 8,000/-", boarding: "Rs. 1,30,000/-", deposit: "Rs. 10,000/-", total: "Rs. 1,48,000/-" },
+  { section: "Jr. College Science", sundry: "Rs. 25,000/-", boarding: "Rs. 1,30,000/-", deposit: "Rs. 10,000/-", total: "Rs. 1,65,000/-" },
+  { section: "Jr. College Commerce", sundry: "Rs. 20,000/-", boarding: "Rs. 1,30,000/-", deposit: "Rs. 10,000/-", total: "Rs. 1,60,000/-" },
+];
+
+const rulesGrid = [
+  {
+    title: "General Conduct",
+    desc: "Students are answerable for their conduct at all times. Cupboards, beds, and kits must remain tidy. Prescribed uniform and proper haircut are mandatory (girls shall tie pleats underneath scarves).",
+  },
+  {
+    title: "Discipline & Campus Decorum",
+    desc: "Courteous speech and premise cleanliness are mandatory. Smoking, tobacco consumption, and outside food without written permission from the Director/Principal are strictly prohibited.",
+  },
+  {
+    title: "Examinations & Promotion",
+    desc: "All internal assessments and examinations are compulsory. Malpractice or persistent indiscipline leads to expulsion. To get promoted, a student must score at least 40% in every subject.",
+  },
+  {
+    title: "School Property",
+    desc: "Students must not tamper with fixtures or move furniture. Parents bear the full cost of repair or replacement for any damage caused to school property.",
+  },
+  {
+    title: "Anti-Ragging & Statutory Directives",
+    desc: "Ragging is strictly forbidden under the Anti-Ragging Act 2009 (Section 32). Zero tolerance is observed under The Sexual Harassment of Women Act 2013 and the POCSO Act 2012.",
+  },
+  {
+    title: "Liability & Authority",
+    desc: "Management and staff bear no liability for injuries sustained on premises or study tours. In all disputes, the decision of the Director/Principal is final.",
+  },
+];
+---
+
+<BaseLayout
+  title="Admissions & Guidelines | Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="Admission guidelines, fees structure, rules, and the online application form for Anjuman-I-Islam Public School & Jr. College, Panchgani."
+>
+  <Header phone1={phone1} phone2={phone2} email={email} />
+
+  <!-- Hero Header -->
+  <section class="w-full bg-[#8b1d2c] border-b border-[#721522] py-16 md:py-24 text-center relative overflow-hidden text-white">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-red-100 bg-white/10 border border-white/20 px-3.5 py-1 rounded-full mb-4">
+        Established 1920 &bull; Panchgani
+      </span>
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+        Admissions &amp; Guidelines
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-red-100 max-w-2xl mx-auto leading-relaxed font-light">
+        Empowering young minds through holistic academics, moral discipline, dedicated faculty, and vibrant residential boarding life.
+      </p>
+    </div>
+  </section>
+
+  <main class="bg-[#fcfdfd] py-14 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+
+      <!-- 1. GENERAL INSTRUCTIONS FOR PARENTS -->
+      <section id="general-instructions-for-parents" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 01
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-8">
+          General Instructions to Parents
+        </h2>
+
+        <div class="space-y-7 text-sm sm:text-base text-slate-600 leading-relaxed">
+          <div class="border-l-2 border-[#8b1d2c] pl-5 py-1">
+            <h3 class="font-bold text-[#0d1b2a] mb-1.5 text-base">Your Co-operation is Expected</h3>
+            <p class="mb-2">
+              Parents and guardians are requested to co-operate with the school in maintaining discipline, integrity, and good behaviour by their wards, in keeping with the traditions of our school. This is possible when parents and guardians:
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2 text-slate-500 text-sm">
+              <li>Acknowledge school circulars, read progress reports carefully, attend PTA meetings, and meet teachers, the Headmaster, or the Director promptly as requested.</li>
+              <li>Do not ask for leave or absence for their ward during the academic session, as this causes loss of study time and disturbs the curriculum schedule.</li>
+              <li>Seek the Director's permission before handing out any food items to students.</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-[#8b1d2c] pl-5 py-1">
+            <h3 class="font-bold text-[#0d1b2a] mb-1.5 text-base">Our Training</h3>
+            <p class="mb-2">
+              In our residential school, all boys and girls are given uniform treatment and no special concessions are permissible. The training is an integrated whole, and everyone is required to study, play, and observe routine throughout their stay.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2 text-slate-500 text-sm">
+              <li>Students are <strong>not</strong> allowed to bring fancy or expensive clothes, electronic gadgets, mobile phones, and similar items.</li>
+              <li>Cash money is strictly prohibited from being kept with students.</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-[#8b1d2c] pl-5 py-1">
+            <h3 class="font-bold text-[#0d1b2a] mb-1.5 text-base">Leaves</h3>
+            <ul class="list-disc list-inside space-y-1.5 ml-2 text-slate-500 text-sm">
+              <li>Parents should ensure students report back on the first day after vacations, duly escorted, failing which a fine of <strong>Rs. 500/- per day</strong> will be imposed.</li>
+              <li>No student shall remain absent from school without prior permission from the Principal.</li>
+              <li>If absence due to illness lasts more than a day, a medical certificate issued by a registered doctor is mandatory.</li>
+              <li>The Principal reserves the right to refuse leave of absence for domestic ceremonies or festivals if it interferes with academics or school discipline.</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-[#8b1d2c] pl-5 py-1">
+            <h3 class="font-bold text-[#0d1b2a] mb-1.5 text-base">Parents' Visits and Withdrawals</h3>
+            <ul class="list-disc list-inside space-y-1.5 ml-2 text-slate-500 text-sm">
+              <li>Parents must not visit their wards in boarding often. Visits are permitted only on the <strong>last Sunday of every month</strong>.</li>
+              <li>Communication is facilitated through the designated dormitory telephone numbers.</li>
+              <li>All notices of withdrawal must be given <strong>two months in advance</strong>. No Transfer Certificate (TC) is issued until all school dues are paid.</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-[#8b1d2c] pl-5 py-1">
+            <h3 class="font-bold text-[#0d1b2a] mb-1.5 text-base">Fees Policy</h3>
+            <ul class="list-disc list-inside space-y-1 ml-2 text-slate-500 text-sm">
+              <li>Fees may be cleared in at most two installments. The first installment is due at admission; the second must be cleared before the Winter exeat.</li>
+              <li>Fees once paid are strictly non-refundable in any case.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. CONDITIONS FOR ADMISSION -->
+      <section id="conditions-for-admission" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 02
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-6">
+          Conditions for Admission
+        </h2>
+
+        <ul class="list-disc list-inside space-y-2.5 text-sm sm:text-base text-slate-600 mb-8 leading-relaxed">
+          <li>The student must produce the School Leaving Certificate (SLC) from the previous school attended, with verified Date of Birth (Day, Month &amp; Year).</li>
+          <li>Submit an attested or photocopy of the Birth Certificate and a government-issued identity proof (e.g., Aadhaar card or equivalent).</li>
+          <li>Proficiency in English is required, as it is the medium of instruction.</li>
+          <li>The student should know Hindi and at least one of: Urdu, Hindi, Marathi, or Gujarati.</li>
+          <li>Students lacking foundational English, Hindi, Urdu, or Marathi may be admitted, provided they pay <strong>Rs. 10,000/- per year extra</strong> for intensive language coaching.</li>
+        </ul>
+
+        <div class="bg-red-50/60 border border-red-100 p-6 rounded-2xl">
+          <h3 class="font-bold text-[#8b1d2c] mb-2 text-base">Requirements for Foreign Students</h3>
+          <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-600">
+            <li>Must have an Indian local guardian responsible for correspondence, fees, and holiday travel.</li>
+            <li>The local guardian must be an active income tax payer, present at admission, and must produce an income-tax certificate.</li>
+            <li>Foreign students must possess a valid <strong>Student Visa</strong> or <strong>Entry Visa</strong> (Tourist Visas will not be accepted).</li>
+            <li>The local guardian must sign a Financial Guarantee Bond on Rs. 100/- stamp paper and complete the Local Guardianship Form.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. RULES AND REGULATIONS -->
+      <section id="rules-regulations" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 03
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-8">
+          Rules and Regulations
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {rulesGrid.map((rule) => (
+            <div class="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 hover:border-slate-300 transition-colors">
+              <h3 class="font-bold text-[#0d1b2a] text-base mb-1.5">{rule.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">{rule.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 4. LIST OF BELONGINGS -->
+      <section id="list-of-belongings" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 04
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-6">
+          List of Belongings
+        </h2>
+
+        <div class="bg-red-50/60 border border-red-100 p-4 rounded-2xl text-xs sm:text-sm font-medium text-[#8b1d2c] mb-8">
+          Notice: All personal belongings and articles must be clearly tagged with embroidery.
+        </div>
+
+        <h3 class="font-bold text-[#0d1b2a] text-base mb-3">Part A: Personal Belongings (Student Has to Bring)</h3>
+        <div class="overflow-x-auto border border-slate-200/80 rounded-2xl mb-10">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-[#0d1b2a] text-white">
+              <tr>
+                <th class="p-3.5 w-16">Sr.</th>
+                <th class="p-3.5">Items</th>
+                <th class="p-3.5 w-36">Quantity</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {belongingsPartA.map((row, idx) => (
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-medium text-slate-500">{idx + 1}</td>
+                  <td class="p-3 font-medium text-slate-800">{row.item}</td>
+                  <td class="p-3 text-slate-600">{row.qty}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="font-bold text-[#0d1b2a] text-base mb-3">Part B: Items Supplied by School (On Extra Payment)</h3>
+        <div class="overflow-x-auto border border-slate-200/80 rounded-2xl">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-[#0d1b2a] text-white">
+              <tr>
+                <th class="p-3.5 w-16">Sr.</th>
+                <th class="p-3.5">Items</th>
+                <th class="p-3.5 w-36">Quantity</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {belongingsPartB.map((row, idx) => (
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3 font-medium text-slate-500">{idx + 1}</td>
+                  <td class="p-3 font-medium text-slate-800">{row.item}</td>
+                  <td class="p-3 text-slate-600">{row.qty}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. FEES STRUCTURE -->
+      <section id="fees-structure" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 05
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-6">
+          Fees Structure (2026&ndash;27)
+        </h2>
+
+        <div class="overflow-x-auto border border-slate-200/80 rounded-2xl mb-8">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-[#0d1b2a] text-white">
+              <tr>
+                <th class="p-3.5">Section</th>
+                <th class="p-3.5">Sundry Fees</th>
+                <th class="p-3.5">Boarding Fees</th>
+                <th class="p-3.5">Security Deposit</th>
+                <th class="p-3.5 font-bold">Total</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {feesRows.map((row) => (
+                <tr class="hover:bg-slate-50">
+                  <td class="p-3.5 font-semibold text-slate-900">{row.section}</td>
+                  <td class="p-3.5 text-slate-600">{row.sundry}</td>
+                  <td class="p-3.5 text-slate-600">{row.boarding}</td>
+                  <td class="p-3.5 text-slate-600">{row.deposit}</td>
+                  <td class="p-3.5 font-bold text-[#8b1d2c]">{row.total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mb-8">
+          <h3 class="font-bold text-[#0d1b2a] text-base mb-2">Important Fee Notes</h3>
+          <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm text-slate-500">
+            <li>Fees are inclusive of accommodation and boarding (food facility during the academic year; vacation periods excluded).</li>
+            <li>Rs. 60,000/- will be charged extra for the JEE / NEET Foundation Course.</li>
+            <li>An extra Rs. 20,000/- is charged for students of foreign nationality.</li>
+            <li>Rs. 10,000/- is charged extra for coaching class students (weak students), only if needed.</li>
+            <li>50% of fees should be paid in advance at the time of admission. All dues must be cleared before December.</li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50/60 border border-red-100 p-6 rounded-2xl text-xs sm:text-sm text-slate-700">
+          <h4 class="font-serif font-bold text-[#8b1d2c] mb-2 text-base">School Account Details for Remittance</h4>
+          <p><strong>Name:</strong> Anjuman-I-Islam Public School, Panchgani</p>
+          <p><strong>Bank:</strong> Bank of Maharashtra (Panchgani Branch)</p>
+          <p><strong>Account No:</strong> 20073140681</p>
+          <p><strong>IFSC Code:</strong> MAHB0000219</p>
+        </div>
+      </section>
+
+      <!-- 6. APPLY NOW (ONLINE APPLICATION) -->
+      <section id="apply-now" class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm scroll-mt-28">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+          Section 06
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-8">
+          Online Admission Application
+        </h2>
+
+        <form action="/submit-admission" method="POST" enctype="multipart/form-data" class="space-y-8">
+
+          <!-- Student Information -->
+          <fieldset class="border border-slate-200/80 rounded-2xl p-5 sm:p-6">
+            <legend class="font-serif font-bold text-[#0d1b2a] px-2 text-sm">Student Information</legend>
+            <div class="space-y-4 mt-2">
+              <div>
+                <label for="student_name" class="block text-xs font-semibold text-slate-600 mb-1">Full Name of Student *</label>
+                <input type="text" id="student_name" name="student_name" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" placeholder="As per previous school records" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="dob" class="block text-xs font-semibold text-slate-600 mb-1">Date of Birth *</label>
+                  <input type="date" id="dob" name="dob" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+                </div>
+                <div>
+                  <label for="gender" class="block text-xs font-semibold text-slate-600 mb-1">Gender *</label>
+                  <select id="gender" name="gender" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="section_select" class="block text-xs font-semibold text-slate-600 mb-1">Section Applying For *</label>
+                  <select id="section_select" name="section" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]">
+                    <option value="">Select Section</option>
+                    <option value="primary-secondary">Primary &amp; Secondary</option>
+                    <option value="jr-science">Jr. College Science</option>
+                    <option value="jr-commerce">Jr. College Commerce</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="nationality" class="block text-xs font-semibold text-slate-600 mb-1">Nationality *</label>
+                  <input type="text" id="nationality" name="nationality" value="Indian" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Academic Background -->
+          <fieldset class="border border-slate-200/80 rounded-2xl p-5 sm:p-6">
+            <legend class="font-serif font-bold text-[#0d1b2a] px-2 text-sm">Academic Background &amp; Languages</legend>
+            <div class="space-y-4 mt-2">
+              <div>
+                <label for="prev_school" class="block text-xs font-semibold text-slate-600 mb-1">Previous School Attended *</label>
+                <input type="text" id="prev_school" name="prev_school" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Languages Known *</label>
+                <div class="flex flex-wrap gap-4 text-xs sm:text-sm text-slate-600 mt-1">
+                  <label class="inline-flex items-center gap-1.5"><input type="checkbox" name="languages" value="English" class="text-[#8b1d2c] focus:ring-[#8b1d2c]" /> English</label>
+                  <label class="inline-flex items-center gap-1.5"><input type="checkbox" name="languages" value="Hindi" class="text-[#8b1d2c] focus:ring-[#8b1d2c]" /> Hindi</label>
+                  <label class="inline-flex items-center gap-1.5"><input type="checkbox" name="languages" value="Urdu" class="text-[#8b1d2c] focus:ring-[#8b1d2c]" /> Urdu</label>
+                  <label class="inline-flex items-center gap-1.5"><input type="checkbox" name="languages" value="Marathi" class="text-[#8b1d2c] focus:ring-[#8b1d2c]" /> Marathi</label>
+                  <label class="inline-flex items-center gap-1.5"><input type="checkbox" name="languages" value="Gujarati" class="text-[#8b1d2c] focus:ring-[#8b1d2c]" /> Gujarati</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Parent / Guardian -->
+          <fieldset class="border border-slate-200/80 rounded-2xl p-5 sm:p-6">
+            <legend class="font-serif font-bold text-[#0d1b2a] px-2 text-sm">Parent / Guardian Contact</legend>
+            <div class="space-y-4 mt-2">
+              <div>
+                <label for="guardian_name" class="block text-xs font-semibold text-slate-600 mb-1">Parent / Guardian Full Name *</label>
+                <input type="text" id="guardian_name" name="guardian_name" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="phone" class="block text-xs font-semibold text-slate-600 mb-1">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-semibold text-slate-600 mb-1">Email Address *</label>
+                  <input type="email" id="email" name="email" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" />
+                </div>
+              </div>
+              <div>
+                <label for="address" class="block text-xs font-semibold text-slate-600 mb-1">Residential Address *</label>
+                <textarea id="address" name="address" rows="3" required class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Document Uploads -->
+          <fieldset class="border border-slate-200/80 rounded-2xl p-5 sm:p-6">
+            <legend class="font-serif font-bold text-[#0d1b2a] px-2 text-sm">Required Document Uploads</legend>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2">
+              <div>
+                <label for="doc_slc" class="block text-xs font-semibold text-slate-600 mb-1">School Leaving Certificate *</label>
+                <input type="file" id="doc_slc" name="doc_slc" accept=".pdf,.jpg,.jpeg,.png" required class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3.5 file:rounded-full file:border-0 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer" />
+              </div>
+              <div>
+                <label for="doc_birth" class="block text-xs font-semibold text-slate-600 mb-1">Birth Certificate *</label>
+                <input type="file" id="doc_birth" name="doc_birth" accept=".pdf,.jpg,.jpeg,.png" required class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3.5 file:rounded-full file:border-0 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer" />
+              </div>
+              <div>
+                <label for="doc_id" class="block text-xs font-semibold text-slate-600 mb-1">Identity Document (ID Proof) *</label>
+                <input type="file" id="doc_id" name="doc_id" accept=".pdf,.jpg,.jpeg,.png" required class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3.5 file:rounded-full file:border-0 file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer" />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Declaration -->
+          <div class="text-xs text-slate-500 bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
+            <label class="inline-flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" name="agree" required class="mt-0.5 text-[#8b1d2c] focus:ring-[#8b1d2c]" />
+              <span>I have carefully read and understood the rules and regulations laid out by AIPS, Panchgani, and I solemnly declare that I agree to abide by the rules and regulations of the school. Failing to do so, appropriate action can be initiated against me. *</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center pt-3">
+            <button 
+              type="submit" 
+              class="inline-flex items-center justify-center px-10 py-3.5 text-xs sm:text-sm font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full transition-all duration-200 shadow-sm hover:shadow active:scale-[0.98]"
+            >
+              <span>Submit Application</span>
+              <span class="ml-1.5">&rarr;</span>
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer phone1={phone1} phone2={phone2} email={email} />
+</BaseLayout>

@@ -1,134 +1,83 @@
 ---
-import Layout from '/src/layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import HeroSlider from '../components/HeroSlider.astro';
 import SchoolGlance from '../components/SchoolGlance.astro';
 import Leadership from '../components/Leadership.astro';
-import NewsSection from '../components/NewsSection.astro';
-import AcademicWings from '../components/AcademicWings.astro';
-import Heritage from '../components/Heritage.astro';
 import VirtualTour from '../components/VirtualTour.astro';
-import CoCurricular from '../components/CoCurricular.astro';
-import Testimonials from '../components/Testimonials.astro';
 import ImageGallery from '../components/ImageGallery.astro';
-import AdmissionsCTA from '../components/AdmissionsCTA.astro';
+import CoCurricular from '../components/CoCurricular.astro';
+import NewsSection from '../components/NewsSection.astro';
 import Footer from '../components/Footer.astro';
 import FloatingSocial from '../components/FloatingSocial.astro';
 
-// SEO & Contact Defaults
-const metaTitle = "Anjuman-I-Islam Public School & Jr. College, Panchgani";
-const metaDescription = "Premier English Medium Residential Co-Ed Boarding School in Panchgani since 1920. Academic excellence, equestrian sports, and holistic character building.";
-const keywords = ["Anjuman Panchgani", "Residential School Panchgani", "Boarding School Maharashtra", "ICSE School"];
-
-const contactPhone1 = "8275204302";
-const contactPhone2 = "8275205404";
-const contactEmail = "anjumanpanchgani@gmail.com";
-const fallbackImage = "/images/gallery/Anjuman Public School Panchgani.webp";
-
-const recentPosts = [
-  {
-    title: "Centenary Heritage & Legacy in the Hills",
-    date: "September 2026",
-    category: "Campus Life",
-    excerpt: "Nurturing generations of leaders with an emphasis on moral character, discipline, and academic distinction.",
-    slug: "heritage-legacy",
-    image: fallbackImage
-  },
-  {
-    title: "State-of-the-Art Science & Digital Learning Labs",
-    date: "August 2026",
-    category: "Academics",
-    excerpt: "Upgraded technological infrastructure providing experiential learning across all academic wings.",
-    slug: "academic-upgrades",
-    image: fallbackImage
-  },
-  {
-    title: "Equestrian & Athletics Excellence Program",
-    date: "July 2026",
-    category: "Sports",
-    excerpt: "Holistic development through expansive sporting grounds, gymnasium, and dedicated horse-riding tracks.",
-    slug: "sports-program",
-    image: fallbackImage
-  }
-];
-
-const testimonialsList = [
-  {
-    name: "Dr. Farooq Siddiqui",
-    relation: "Parent of Class X Student",
-    quote: "The discipline, care, and peaceful hill environment of Panchgani have nurtured our son into a self-reliant, confident young scholar.",
-    avatar: fallbackImage
-  },
-  {
-    name: "Mrs. Shabana Merchant",
-    relation: "Parent of Junior College Scholar",
-    quote: "A true second home. The faculty and hostel staff provide unmatched pastoral care alongside exceptional academic standards.",
-    avatar: fallbackImage
-  }
-];
-
-const galleryItems = [
-  {
-    src: fallbackImage,
-    alt: "Historic Campus Heritage Building Panchgani",
-    title: "Historic Campus",
-    category: "Campus"
-  },
-  {
-    src: fallbackImage,
-    alt: "Equestrian Ground and Sports Arena",
-    title: "Sports & Riding Arena",
-    category: "Sports"
-  },
-  {
-    src: fallbackImage,
-    alt: "Modern Boarding School Dormitories",
-    title: "Hostel Living",
-    category: "Hostel"
-  }
-];
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
 ---
 
-<Layout 
-  title={metaTitle}
-  metaTitle={metaTitle}
-  description={metaDescription}
-  metaDescription={metaDescription}
-  keywords={keywords}
+<BaseLayout
+  title="Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="English Medium Residential Co-Ed School & Junior College established in 1920 in Panchgani, Maharashtra. Affiliated with Maharashtra State Board (SSC & HSC)."
 >
-  <Header 
-    phone1={contactPhone1} 
-    phone2={contactPhone2} 
-    email={contactEmail} 
-  />
-  
-  <HeroSlider />
-  
-  <SchoolGlance />
-  
-  <Leadership />
-  
-  <NewsSection recentPosts={recentPosts} />
-  
-  <AcademicWings />
-  
-  <Heritage />
-  
-  <VirtualTour />
-  
-  <CoCurricular />
-  
-  <Testimonials testimonials={testimonialsList} />
-  
-  <ImageGallery items={galleryItems} />
-  
-  <AdmissionsCTA phone={contactPhone1} />
-  
-  <Footer 
-    phone1={contactPhone1} 
-    phone2={contactPhone2} 
-    email={contactEmail} 
-  />
-  
-  <FloatingSocial phone={contactPhone1} />
-</Layout>
+  <!-- Global Navigation Header -->
+  <Header phone1={phone1} phone2={phone2} email={email} />
+
+  <main>
+    <!-- 1. Hero Slider with Cinematic Zoom -->
+    <HeroSlider />
+
+    <!-- 2. School at a Glance Animated Counter Stats -->
+    <SchoolGlance />
+
+    <!-- 3. Leadership Messages with Full Square Portraits -->
+    <Leadership />
+
+    <!-- 4. Virtual Campus Tour Video Embed -->
+    <VirtualTour />
+
+    <!-- 5. Campus Visual Gallery Grid -->
+    <ImageGallery />
+
+    <!-- 6. Co-Curricular Institutional Pillars -->
+    <CoCurricular />
+
+    <!-- 7. Latest News Continuous Marquee Slider -->
+    <NewsSection />
+
+    <!-- 8. Admissions Open CTA Block (Univet Crimson #8f1d2c Styling) -->
+    <section class="bg-[#8f1d2c] text-white py-20 px-6 text-center border-t border-[#7a1524]" aria-label="Admissions Call to Action">
+      <div class="max-w-4xl mx-auto flex flex-col items-center">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+          Admissions Open
+        </h2>
+        
+        <p class="mt-4 text-base sm:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+          Join a century-old tradition of academic excellence in Panchgani. Enquire about seats for the upcoming academic year.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <!-- Primary Pill Button -->
+          <a
+            href="/admission#general-instructions-for-parents"
+            class="inline-flex items-center justify-center px-7 py-3 text-sm sm:text-base font-semibold text-[#8f1d2c] bg-white rounded-full transition-all duration-200 shadow-md hover:bg-white/90 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            View Admission Requirements &rarr;
+          </a>
+
+          <!-- Secondary Call Button -->
+          <a
+            href={`tel:${phone1}`}
+            class="inline-flex items-center justify-center px-7 py-3 text-sm sm:text-base font-semibold text-white bg-transparent border-2 border-white rounded-full transition-all duration-200 hover:bg-white hover:text-[#8f1d2c]"
+          >
+            Call {phone1}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer & Floating Widget -->
+  <Footer phone1={phone1} phone2={phone2} email={email} />
+  <FloatingSocial phone={phone1} />
+</BaseLayout>

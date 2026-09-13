@@ -9,6 +9,7 @@ interface Post {
   slug: string;
   image: string;
 }
+
 interface Props {
   recentPosts?: Post[];
 }
@@ -16,36 +17,147 @@ interface Props {
 let { recentPosts } = Astro.props;
 
 if (!recentPosts) {
-  const entries = await reader.collections.news.all();
-  recentPosts = entries
-    .map((e) => ({
-      title: e.entry.title,
-      date: e.entry.date,
-      category: e.entry.category,
-      excerpt: e.entry.excerpt,
-      slug: e.slug,
-      image: e.entry.image,
-    }))
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+  try {
+    const entries = await reader.collections.news.all();
+    recentPosts = entries
+      .map((e) => ({
+        title: e.entry.title,
+        date: e.entry.date,
+        category: e.entry.category,
+        excerpt: e.entry.excerpt,
+        slug: e.slug,
+        image: e.entry.image,
+      }))
+      .sort((a, b) => (a.date < b.date ? 1 : -1));
+  } catch (err) {
+    recentPosts = [];
+  }
 }
+
+// Ensure there are at least fallback items if database is empty
+if (!recentPosts || recentPosts.length === 0) {
+  recentPosts = [
+    {
+      title: "Admissions Open for Academic Year 2026–2027",
+      date: "September 2026",
+      category: "Admissions",
+      excerpt: "Applications open for Pre-Primary through XII Science with NEET, JEE & CET Coaching.",
+      slug: "admissions-open-2026",
+      image: "/images/hero/Anjuman Public School Panchgani.webp",
+    },
+    {
+      title: "Centenary Heritage & Academic Distinctions",
+      date: "August 2026",
+      category: "Campus Life",
+      excerpt: "Nurturing generations of leaders with an emphasis on moral character, discipline, and distinction.",
+      slug: "heritage-legacy",
+      image: "/images/hero/Anjuman-junior-college-Panchgani.webp",
+    },
+    {
+      title: "Robotics, Artificial Intelligence & Aviation Club",
+      date: "July 2026",
+      category: "Academics",
+      excerpt: "State-of-the-art experiential learning labs enhancing foundational technical literacy.",
+      slug: "tech-labs",
+      image: "/images/hero/Astronomy-Club.webp",
+    }
+  ];
+}
+
+// Duplicate items to ensure smooth infinite loop
+const sliderItems = [...recentPosts, ...recentPosts];
 ---
 
-<section class="py-16 px-6 bg-slate-950">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="font-serif text-2xl md:text-3xl text-white">Campus News</h2>
-    <p class="mt-2 text-slate-400">What's happening at Anjuman-I-Islam.</p>
+<section class="py-20 bg-[#fdfdfd] border-b border-gray-200 overflow-hidden" aria-label="Latest Institutional News">
+  <div class="max-w-6xl mx-auto px-6 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div>
+      <span class="inline-block text-xs font-extrabold uppercase tracking-widest text-[#c28b1e] bg-[#c28b1e]/10 px-3 py-1 rounded mb-2">
+        Updates & Announcements
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#103020] tracking-tight">
+        Latest News
+      </h2>
+      <p class="mt-1 text-sm sm:text-base text-gray-600">
+        Stay updated with academic breakthroughs, events, and campus life at Panchgani.
+      </p>
+    </div>
 
-    <div class="mt-10 grid md:grid-cols-3 gap-6">
-      {recentPosts.map((post) => (
-        <article class="rounded-lg overflow-hidden bg-slate-900 border border-slate-800 hover:border-amber-600/50 transition-colors">
-          <img src={post.image} alt={post.title} class="w-full h-40 object-cover" onerror="this.style.display='none'" />
-          <div class="p-5">
-            <p class="text-xs text-amber-400">{post.category} · {post.date}</p>
-            <h3 class="mt-2 font-serif text-lg text-white leading-snug">{post.title}</h3>
-            <p class="mt-2 text-sm text-slate-400">{post.excerpt}</p>
+    <a
+      href="/newsletter"
+      class="inline-flex items-center gap-1.5 text-sm font-bold text-[#103020] hover:text-[#c28b1e] transition-colors shrink-0 group"
+    >
+      <span>View All Stories</span>
+      <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+    </a>
+  </div>
+
+  <!-- Horizontal Infinite Scroll Track (Right-to-Left) -->
+  <div class="w-full overflow-hidden relative">
+    <!-- Edge Gradients for soft fading -->
+    <div class="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#fdfdfd] to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#fdfdfd] to-transparent z-10 pointer-events-none"></div>
+
+    <div class="news-slider-track flex gap-6 px-6">
+      {sliderItems.map((post) => (
+        <article class="news-card shrink-0 w-[300px] sm:w-[350px] bg-white border-2 border-[#103020] rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-44 overflow-hidden border-b-2 border-[#c28b1e] bg-slate-100">
+              <img
+                src={post.image}
+                alt={post.title}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                onerror="this.src='/images/hero/Anjuman Public School Panchgani.webp'"
+                loading="lazy"
+              />
+            </div>
+            
+            <div class="p-5">
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider mb-2">
+                <span class="text-[#c28b1e]">{post.category}</span>
+                <span class="text-gray-400">{post.date}</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-[#103020] leading-snug line-clamp-2 hover:text-[#c28b1e] transition-colors">
+                <a href={post.slug ? `/news/${post.slug}` : '/newsletter'}>
+                  {post.title}
+                </a>
+              </h3>
+              <p class="mt-2 text-xs sm:text-sm text-gray-600 line-clamp-3 leading-relaxed">
+                {post.excerpt}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-5 pb-5 pt-2 border-t border-gray-100 flex items-center justify-between">
+            <a
+              href={post.slug ? `/news/${post.slug}` : '/newsletter'}
+              class="text-xs font-bold text-[#103020] hover:text-[#c28b1e] transition-colors inline-flex items-center gap-1"
+            >
+              Read Full Article <span>&rarr;</span>
+            </a>
+            <span class="w-2 h-2 rounded-full bg-[#c28b1e]"></span>
           </div>
         </article>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .news-slider-track {
+    width: max-content;
+    animation: slideRightToLeft 36s linear infinite;
+  }
+
+  .news-slider-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slideRightToLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

@@ -7,37 +7,119 @@ interface GalleryItem {
   title: string;
   category: string;
 }
+
 interface Props {
   items?: GalleryItem[];
 }
 
 let { items } = Astro.props;
 
-if (!items) {
-  const entries = await reader.collections.gallery.all();
-  items = entries.map((e) => ({
-    src: e.entry.image,
-    alt: e.entry.alt,
-    title: e.entry.title,
-    category: e.entry.category,
-  }));
+// Hero folder default items as requested
+const defaultHeroGallery: GalleryItem[] = [
+  {
+    src: '/images/hero/Anjuman Public School Panchgani.webp',
+    alt: 'Anjuman-I-Islam Main Campus Panorama',
+    title: 'Historic Heritage Campus',
+    category: 'Architecture',
+  },
+  {
+    src: '/images/hero/Anjuman-junior-college-Panchgani.webp',
+    alt: 'Junior College & Academic Wings',
+    title: 'Senior Secondary Wing',
+    category: 'Academics',
+  },
+  {
+    src: '/images/hero/Astronomy-Club.webp',
+    alt: 'Astronomy & Experiential Clubs',
+    title: 'Astronomy & Tech Club',
+    category: 'Co-Curricular',
+  },
+  {
+    src: '/images/hero/hero-4.webp',
+    alt: 'Expansive Campus & Sports Arena',
+    title: '275,186 Sq. Mtr Campus Grounds',
+    category: 'Campus',
+  },
+  {
+    src: '/images/hero/hero-5.webp',
+    alt: 'Equestrian & Archery Practice',
+    title: 'Sports, Riding & Archery',
+    category: 'Sports',
+  },
+  {
+    src: '/images/hero/hero-6.webp',
+    alt: 'Boarding Hostels & Residential Facilities',
+    title: 'Hostel & Residential Life',
+    category: 'Residential',
+  },
+];
+
+if (!items || items.length === 0) {
+  try {
+    const entries = await reader.collections.gallery.all();
+    if (entries && entries.length > 0) {
+      items = entries.map((e) => ({
+        src: e.entry.image,
+        alt: e.entry.alt || e.entry.title || 'Campus Image',
+        title: e.entry.title,
+        category: e.entry.category || 'Campus',
+      }));
+    } else {
+      items = defaultHeroGallery;
+    }
+  } catch (error) {
+    items = defaultHeroGallery;
+  }
+} else {
+  // If fallback items were passed in from index.astro with generic fallbacks, use the enriched hero set
+  items = defaultHeroGallery;
 }
 ---
 
-<section class="py-16 px-6 bg-slate-950">
+<section class="py-20 px-6 bg-[#08170f] border-b border-[#1a4230]" aria-label="Campus Visual Gallery">
   <div class="max-w-6xl mx-auto">
-    <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Campus Gallery</h2>
+    
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#f7d070] bg-white/[0.06] border border-white/10 px-3 py-1 rounded mb-3">
+        Campus Life & Facilities
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Campus Gallery
+      </h2>
+      <p class="mt-2 text-sm sm:text-base text-slate-300">
+        A glimpse into daily life, sprawling grounds, and academic infrastructure at Panchgani.
+      </p>
+    </div>
 
-    <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <!-- Gallery Grid with Square Frames & Hover Zoom -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((item) => (
-        <figure class="relative rounded-lg overflow-hidden group">
-          <img src={item.src} alt={item.alt} class="w-full h-56 object-cover" onerror="this.style.display='none'" />
-          <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-slate-950/90 to-transparent">
-            <p class="text-xs text-amber-400">{item.category}</p>
-            <p class="text-white text-sm">{item.title}</p>
+        <figure class="relative border-2 border-[#1a4230] hover:border-[#c28b1e] rounded-none overflow-hidden group bg-slate-900 transition-all duration-300 shadow-md">
+          <div class="w-full h-64 overflow-hidden">
+            <img
+              src={item.src}
+              alt={item.alt}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+              onerror="this.src='/images/hero/Anjuman Public School Panchgani.webp'"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Permanent subtle vignette + hover reveal text -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0b2015] via-[#0b2015]/30 to-transparent pointer-events-none"></div>
+
+          <figcaption class="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex flex-col justify-end">
+            <span class="inline-block text-[11px] font-bold text-[#f7d070] uppercase tracking-wider mb-1">
+              {item.category}
+            </span>
+            <p class="text-white text-base font-bold tracking-tight group-hover:text-[#f7d070] transition-colors leading-snug">
+              {item.title}
+            </p>
           </figcaption>
         </figure>
       ))}
     </div>
+
   </div>
 </section>

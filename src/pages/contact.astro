@@ -1,68 +1,224 @@
 ---
+// src/pages/contact.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
+
+const contactCards = [
+  {
+    title: "Admissions Office",
+    subtitle: "New admissions, fee structures, & campus tours",
+    details: [`Phone: ${phone1} / ${phone2}`, `Email: ${email}`],
+    badge: "Admissions Desk"
+  },
+  {
+    title: "Campus Administration",
+    subtitle: "General institutional inquiries & official correspondence",
+    details: ["Mon. – Sat. : 9:00 AM – 5:00 PM", "Panchgani, District Satara, Maharashtra 412805"],
+    badge: "Main Office"
+  },
+  {
+    title: "Hostel & Student Welfare",
+    subtitle: "Residential boarding care & parent visitation inquiries",
+    details: ["Parent Visitations: Last Sunday of every month", "Dormitory communication via desk extension"],
+    badge: "Residential Life"
+  }
+];
 ---
 
 <BaseLayout
-  title="Contact | Anjuman-I-Islam Public School & Jr. College"
-  description="Contact Anjuman-I-Islam Public School and Jr. College in Panchgani."
+  title="Contact Us | Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="Get in touch with Anjuman-I-Islam Public School & Jr. College, Panchgani. Plan your campus visit, reach our admissions desk, or submit an online inquiry."
 >
-  <header class="border-b border-slate-800 bg-slate-950/80">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-      <a href="/" class="font-semibold text-white">Anjuman-I-Islam</a>
-      <nav class="flex gap-5 text-sm text-slate-300" aria-label="Primary navigation">
-        <a class="hover:text-amber-300" href="/">Home</a>
-        <a class="hover:text-amber-300" href="/about">About</a>
-        <a class="hover:text-amber-300" href="/admission-requirements">Admissions</a>
-        <a class="text-amber-300" href="/contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <Header phone1={phone1} phone2={phone2} email={email} />
 
-  <main class="mx-auto w-full max-w-5xl px-6 py-16">
-    <div class="max-w-3xl">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">We are here to help</p>
-      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Contact the school</h1>
-      <p class="mt-6 text-xl leading-8 text-slate-300">
-        Reach out to our team for admissions guidance, campus information, or questions about student life.
+  <!-- Hero Header -->
+  <section class="w-full bg-[#8b1d2c] text-white py-16 sm:py-20 px-4 sm:px-6 text-center border-b border-[#721522]">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-block text-xs uppercase tracking-[0.25em] text-red-200 font-semibold mb-4">
+        Reach Our Campus &bull; Panchgani
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white mb-4 leading-tight">
+        Contact &amp; Visit Us
+      </h1>
+      <p class="text-sm sm:text-base text-red-100 max-w-2xl mx-auto font-light leading-relaxed">
+        Whether you are planning an admission visit or have questions about our residential boarding curriculum, our team is here to assist you.
       </p>
     </div>
+  </section>
 
-    <div class="mt-14 grid gap-8 md:grid-cols-3">
-      <section class="border border-slate-800 bg-slate-900/70 p-6">
-        <h2 class="text-lg font-semibold text-white">Visit</h2>
-        <p class="mt-3 leading-7 text-slate-300">Anjuman-I-Islam Public School & Jr. College<br />Panchgani, Maharashtra, India</p>
-      </section>
-      <section class="border border-slate-800 bg-slate-900/70 p-6">
-        <h2 class="text-lg font-semibold text-white">Admissions</h2>
-        <p class="mt-3 leading-7 text-slate-300">For admission enquiries and current application information, please contact the school office.</p>
-      </section>
-      <section class="border border-slate-800 bg-slate-900/70 p-6">
-        <h2 class="text-lg font-semibold text-white">Online</h2>
-        <p class="mt-3 leading-7 text-slate-300">Send us a message and include the student’s class or programme so we can direct your enquiry.</p>
-      </section>
-    </div>
+  <!-- Main Content -->
+  <main class="w-full max-w-[1180px] mx-auto px-4 sm:px-6 py-14 space-y-16">
 
-    <section class="mt-10 max-w-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
-      <h2 class="text-2xl font-semibold text-white">Send an enquiry</h2>
-      <form class="mt-6 space-y-5" action="mailto:school@anjuman-islam.example" method="post" enctype="text/plain">
-        <label class="block text-sm font-medium text-slate-200" for="name">
-          Your name
-          <input class="mt-2 w-full border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-amber-400" id="name" name="name" required />
-        </label>
-        <label class="block text-sm font-medium text-slate-200" for="email">
-          Email address
-          <input class="mt-2 w-full border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-amber-400" id="email" name="email" type="email" required />
-        </label>
-        <label class="block text-sm font-medium text-slate-200" for="message">
-          Message
-          <textarea class="mt-2 min-h-36 w-full border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-amber-400" id="message" name="message" required></textarea>
-        </label>
-        <button class="bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300" type="submit">Send enquiry</button>
-      </form>
+    <!-- 1. Key Office Department Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {contactCards.map((card) => (
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] bg-red-50 border border-red-100 px-3 py-1 rounded-full">
+                {card.badge}
+              </span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#8b1d2c]"></span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-[#0d1b2a] mb-1.5">
+              {card.title}
+            </h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">
+              {card.subtitle}
+            </p>
+            <div class="space-y-1 text-xs sm:text-sm text-slate-700">
+              {card.details.map((line) => (
+                <p class="font-medium">{line}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
     </section>
+
+    <!-- 2. Interactive Form & Location Map Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Inquiry Form (7 Cols) -->
+      <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-10 shadow-sm">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-1">
+          Direct Message
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight border-b border-slate-100 pb-4 mb-6">
+          Send Us an Inquiry
+        </h2>
+
+        <form action="/submit-contact" method="POST" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="full_name" class="block text-xs font-semibold text-slate-600 mb-1.5">Your Full Name *</label>
+              <input 
+                type="text" 
+                id="full_name" 
+                name="full_name" 
+                required 
+                class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" 
+                placeholder="e.g., Tariq Khan" 
+              />
+            </div>
+            <div>
+              <label for="contact_phone" class="block text-xs font-semibold text-slate-600 mb-1.5">Phone Number *</label>
+              <input 
+                type="tel" 
+                id="contact_phone" 
+                name="contact_phone" 
+                required 
+                class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" 
+                placeholder="+91 98765 43210" 
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="contact_email" class="block text-xs font-semibold text-slate-600 mb-1.5">Email Address *</label>
+              <input 
+                type="email" 
+                id="contact_email" 
+                name="contact_email" 
+                required 
+                class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" 
+                placeholder="name@domain.com" 
+              />
+            </div>
+            <div>
+              <label for="inquiry_type" class="block text-xs font-semibold text-slate-600 mb-1.5">Inquiry Type *</label>
+              <select 
+                id="inquiry_type" 
+                name="inquiry_type" 
+                required 
+                class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]"
+              >
+                <option value="">Select Category</option>
+                <option value="admission">Admission for 2026–2027</option>
+                <option value="junior-college">Junior College (Science / Commerce)</option>
+                <option value="campus-visit">Schedule Campus Tour</option>
+                <option value="general">General Administrative Query</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-xs font-semibold text-slate-600 mb-1.5">Your Message *</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="4" 
+              required 
+              class="w-full border border-slate-200 rounded-xl p-3 text-sm bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b1d2c]/20 focus:border-[#8b1d2c]" 
+              placeholder="Please provide details regarding your query, student's current standard, or desired visit date..."
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="inline-flex items-center justify-center px-8 py-3.5 text-xs sm:text-sm font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full transition-all duration-200 shadow-sm hover:shadow active:scale-[0.98]"
+            >
+              <span>Send Message</span>
+              <span class="ml-1.5">&rarr;</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Campus Directions & Embedded Map (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-8 shadow-sm space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#0d1b2a] block">
+            Visiting the Campus
+          </span>
+          <h3 class="font-serif text-xl font-bold text-[#0d1b2a]">
+            How to Reach Us
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Our 174-acre residential campus is located in the scenic hills of Panchgani, Maharashtra. The campus is well-connected by road from Pune (approx. 100 km) and Mumbai (approx. 250 km) via the NH 48 highway corridor.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-2.5">
+            <a
+              href={`tel:${phone1}`}
+              class="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full transition-all duration-200 shadow-sm"
+            >
+              <span>Call Admissions</span>
+            </a>
+            <a
+              href="https://maps.google.com/?q=anjuman-i-islam+public+school+panchgani"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-full transition-colors"
+            >
+              <span>Open in Google Maps &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Embedded Map Container -->
+        <div class="w-full h-80 rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm bg-slate-900 relative">
+          <iframe
+            title="Anjuman-I-Islam Public School Panchgani Campus Map"
+            src="https://www.google.com/maps?sca_esv=c3fa94b0e0973b9d&rlz=1C1CFYW_en-GBIN1175IN1175&output=embed&q=anjuman-i-islam+public+school+panchgani"
+            class="w-full h-full border-0 absolute inset-0"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
-  <footer class="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-500">
-    &copy; {new Date().getFullYear()} Anjuman-I-Islam Public School & Jr. College, Panchgani.
-  </footer>
+  <Footer phone1={phone1} phone2={phone2} email={email} />
 </BaseLayout>

@@ -1,39 +1,87 @@
 ---
 const leaders = [
   {
-    name: "The Chairman",
-    role: "Chairman, Anjuman-I-Islam",
-    image: "/images/leadership/chairman.jpg",
-    note: "Guiding the institution's academic and administrative vision.",
+    role: "Hon. President, Anjuman-I-Islam",
+    name: "Dr. Zahir I. Kazi",
+    honors: "Padma Shri Awardee",
+    image: "/images/leadership/dr-zahir-kazi.webp",
+    message: [
+      "Welcome to Anjuman-I-Islam Public School & Jr. College, Panchgani. For over a century, our institution has stood as a beacon of quality education, moral uprightness, and holistic development in the serene hills of Maharashtra.",
+      "Our mission is to nurture confident, compassionate, and intellectually curious young men and women who are grounded in ethical values while prepared to excel on global platforms.",
+      "Through state-of-the-art academic curricula, dedicated faculty mentorship, and an enriching residential campus life, we empower every student to realise their highest human and scholarly potential.",
+    ],
   },
   {
-    name: "The President",
-    role: "President, Anjuman-I-Islam",
-    image: "/images/leadership/president.jpeg",
-    note: "Overseeing the school's century-long commitment to education.",
+    role: "Executive Chairman, Board of Maharashtra Public Schools",
+    name: "Adv. Shaukat Ali Betgeri",
+    honors: "Advocate & Educationist",
+    image: "/images/leadership/shaukat-betgeri.webp",
+    message: [
+      "At Anjuman-I-Islam Panchgani, education extends far beyond textbooks. It is an immersive journey of character building, self-reliance, and physical vitality fostered within an inspiring mountain setting.",
+      "We provide rigorous preparation across Maharashtra State Board (SSC and HSC Science/Commerce streams), alongside coaching for NEET, JEE, and competitive national examinations.",
+      "Our focus remains steadfast on providing a safe, disciplined, and modern residential atmosphere where students from across India and abroad discover their true talents.",
+    ],
   },
 ];
 ---
 
-<section class="py-16 px-6 max-w-6xl mx-auto">
-  <h2 class="font-serif text-2xl md:text-3xl text-white text-center">Leadership</h2>
-  <p class="mt-2 text-slate-400 text-center max-w-xl mx-auto">
-    Stewarding a century of academic tradition in the hills of Panchgani.
-  </p>
+<section class="py-20 px-6 bg-white border-b border-[#e2e8e4]" aria-label="Institutional Leadership">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-block text-xs font-extrabold uppercase tracking-widest text-[#c28b1e] bg-[#c28b1e]/10 px-3 py-1 rounded mb-3">
+        Guiding Vision
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-[#103020] tracking-tight">
+        Leadership & Stewardship
+      </h2>
+      <p class="mt-2 text-sm sm:text-base text-gray-600">
+        Committed to over a century of educational integrity, equity, and forward-looking guidance.
+      </p>
+    </div>
 
-  <div class="mt-10 grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
-    {leaders.map((leader) => (
-      <div class="text-center">
-        <img
-          src={leader.image}
-          alt={leader.name}
-          class="w-32 h-32 mx-auto rounded-full object-cover border-2 border-amber-600"
-          onerror="this.style.display='none'"
-        />
-        <h3 class="mt-4 font-serif text-lg text-white">{leader.name}</h3>
-        <p class="text-amber-400 text-sm">{leader.role}</p>
-        <p class="mt-2 text-slate-400 text-sm">{leader.note}</p>
-      </div>
-    ))}
+    <div class="space-y-16">
+      {leaders.map((leader, idx) => (
+        <div class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#fdfdfd] border-2 border-[#103020] p-6 sm:p-10 shadow-[0_8px_24px_rgba(16,48,32,0.06)] ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          
+          <!-- Full Uncropped Portrait Card -->
+          <div class={`lg:col-span-4 flex flex-col items-center text-center ${idx % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
+            <div class="w-full max-w-[280px] bg-white border-2 border-[#c28b1e] p-2 shadow-sm">
+              <img
+                src={leader.image}
+                alt={`${leader.name} - ${leader.role}`}
+                width="320"
+                height="420"
+                class="w-full h-auto object-contain block mx-auto"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#103020] mt-4 tracking-tight">
+              {leader.name}
+            </h3>
+            <span class="text-xs font-bold text-[#c28b1e] uppercase tracking-wider mt-0.5 block">
+              {leader.honors}
+            </span>
+            <span class="text-xs font-semibold text-gray-500 mt-1 block">
+              {leader.role}
+            </span>
+          </div>
+
+          <!-- Unabridged Message Body -->
+          <div class={`lg:col-span-8 space-y-4 text-sm sm:text-[15px] text-gray-700 leading-relaxed ${idx % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
+            <div class="border-l-4 border-[#c28b1e] pl-4 mb-3">
+              <span class="text-xs font-black uppercase tracking-widest text-[#103020]">
+                Official Message
+              </span>
+            </div>
+            {leader.message.map((paragraph) => (
+              <p class="text-justify">{paragraph}</p>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
   </div>
 </section>

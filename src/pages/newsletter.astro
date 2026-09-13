@@ -1,0 +1,180 @@
+---
+// src/pages/newsletter.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
+
+const newsPosts = [
+  {
+    title: "Admissions Open for Academic Year 2026–2027",
+    date: "August 28, 2026",
+    category: "Admissions",
+    summary: "Applications are officially open for residential boarding and day-scholar students from Pre-Primary through Class XII (Science & Commerce with integrated competitive exam coaching).",
+    image: "/images/hero/campus-view.webp",
+    readTime: "3 min read",
+    badgeColor: "bg-red-50 text-[#8b1d2c] border border-red-100",
+    buttonText: "Explore Admissions",
+    buttonHref: "/admission#apply-now"
+  },
+  {
+    title: "Annual Sports Meet & Athletic Championship Concludes",
+    date: "August 15, 2026",
+    category: "Campus Life",
+    summary: "Students demonstrated athletic discipline, stamina, and house camaraderie during our multi-day track and field championship meet across our high-altitude sports grounds.",
+    image: "/images/hero/campus-view.webp",
+    readTime: "4 min read",
+    badgeColor: "bg-slate-100 text-[#0d1b2a] border border-slate-200",
+    buttonText: "Read Story",
+    buttonHref: "#"
+  },
+  {
+    title: "State Board Examination Results: 100% Pass Record Maintained",
+    date: "July 22, 2026",
+    category: "Academics",
+    summary: "Our SSC and HSC cohorts have upheld the school's century-old tradition with exemplary distinctions and first-class merits across Science and Commerce streams.",
+    image: "/images/hero/campus-view.webp",
+    readTime: "2 min read",
+    badgeColor: "bg-red-50 text-[#8b1d2c] border border-red-100",
+    buttonText: "Read Story",
+    buttonHref: "#"
+  },
+  {
+    title: "Robotics & Innovation Lab Unveils Student Prototypes",
+    date: "July 10, 2026",
+    category: "Innovation",
+    summary: "Junior College and High School students showcased practical automation rigs, basic aeronautics models, and coding projects at the annual campus tech exhibition.",
+    image: "/images/hero/campus-view.webp",
+    readTime: "3 min read",
+    badgeColor: "bg-slate-100 text-[#0d1b2a] border border-slate-200",
+    buttonText: "Read Story",
+    buttonHref: "#"
+  },
+  {
+    title: "Monsoon Tree Plantation Drive on Tableland Campus",
+    date: "June 25, 2026",
+    category: "Environment",
+    summary: "Students and residential mentors planted native flora across the 174-acre mountain campus to preserve ecological equilibrium and biodiversity in the Western Ghats.",
+    image: "/images/hero/campus-view.webp",
+    readTime: "2 min read",
+    badgeColor: "bg-slate-100 text-[#0d1b2a] border border-slate-200",
+    buttonText: "Read Story",
+    buttonHref: "#"
+  },
+  {
+    title: "Comprehensive NEET & JEE Integrated Foundation Commences",
+    date: "June 12, 2026",
+    category: "Junior College",
+    summary: "Rigorous daily concept coaching, mock evaluations, and supervised evening prep have begun for the new Std XI Science medical and engineering entrance batches.",
+    image: "/images/hero/campus-view.webp",
+    readTime: "3 min read",
+    badgeColor: "bg-red-50 text-[#8b1d2c] border border-red-100",
+    buttonText: "Read Story",
+    buttonHref: "/junior-college"
+  }
+];
+---
+
+<BaseLayout
+  title="News & Announcements | Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="Stay updated with the latest campus news, academic achievements, events, and official circulars from Anjuman-I-Islam Public School & Jr. College, Panchgani."
+>
+  <Header phone1={phone1} phone2={phone2} email={email} />
+
+  <!-- Hero Banner (Midnight Navy #0d1b2a) -->
+  <section class="w-full bg-[#0d1b2a] text-white py-16 sm:py-20 px-4 sm:px-6 text-center border-b border-[#1b263b] relative overflow-hidden">
+    <div class="max-w-3xl mx-auto relative z-10">
+      <span class="inline-block text-xs uppercase tracking-[0.25em] text-red-200 bg-white/10 border border-white/15 px-3.5 py-1 rounded-full mb-4">
+        Campus Bulletin &bull; Panchgani
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-white mb-4 leading-tight">
+        News &amp; Happenings
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Explore recent achievements, campus developments, co-curricular highlights, and circulars from our residential community.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content: 6 Full Cards -->
+  <main class="w-full max-w-[1180px] mx-auto px-4 sm:px-6 py-14 space-y-8 bg-[#fcfdfd]">
+
+    {newsPosts.map((post) => (
+      <section class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-10 shadow-sm hover:border-slate-300 transition-colors">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left Column: Content -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center gap-3">
+              <span class={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full ${post.badgeColor}`}>
+                {post.category}
+              </span>
+              <span class="text-xs text-slate-400 font-medium">{post.date}</span>
+              <span class="text-xs text-slate-400 font-medium">&bull; {post.readTime}</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#0d1b2a] tracking-tight leading-snug">
+              {post.title}
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              {post.summary}
+            </p>
+
+            <div class="pt-2">
+              <a
+                href={post.buttonHref}
+                class="inline-flex items-center justify-center gap-2 px-7 py-3 text-xs sm:text-sm font-bold text-white bg-[#0d1b2a] hover:bg-[#1b263b] rounded-full transition-all duration-200 shadow-sm active:scale-[0.98]"
+              >
+                <span>{post.buttonText}</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Framed Image -->
+          <div class="lg:col-span-5">
+            <div class="overflow-hidden rounded-2xl border border-slate-200/90 shadow-sm bg-slate-900">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-64 sm:h-72 object-cover"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='/images/logo.webp'; this.classList.add('p-10','object-contain');"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+    ))}
+
+    <!-- Pre-Footer Admissions CTA Block (Crimson Red #8b1d2c) -->
+    <section class="w-full bg-[#8b1d2c] text-white rounded-3xl p-8 sm:p-12 shadow-sm border border-[#721522] flex flex-col md:flex-row items-center justify-between gap-8 mt-12">
+      <div class="space-y-2 text-center md:text-left">
+        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white leading-tight">
+          Stay Connected with Anjuman-I-Islam
+        </h3>
+        <p class="text-red-100 font-light text-sm sm:text-base max-w-xl">
+          For press inquiries, alumni updates, or official parent circulars, connect directly with our administrative desk.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 shrink-0 justify-center">
+        <a 
+          href="/contact" 
+          class="inline-flex items-center justify-center px-7 py-3.5 text-xs sm:text-sm font-bold text-[#8b1d2c] bg-white hover:bg-red-50 rounded-full transition-all duration-200 shadow hover:shadow-md active:scale-[0.98]"
+        >
+          <span>Contact Admissions Desk &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (Midnight Navy #0d1b2a with Crimson Border) -->
+  <Footer phone1={phone1} phone2={phone2} email={email} />
+</BaseLayout>

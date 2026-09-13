@@ -1,4 +1,5 @@
----
+﻿---
+// src/components/Header.astro
 import { reader } from '../lib/keystatic-reader';
 
 interface Props {
@@ -10,63 +11,211 @@ interface Props {
 const settings = await reader.singletons.siteSettings.read();
 
 const {
-  phone1 = settings?.phone1 ?? '',
-  phone2 = settings?.phone2 ?? '',
-  email = settings?.email ?? '',
+  phone1 = settings?.phone1 ?? '8275204302',
+  phone2 = settings?.phone2 ?? '8275205404',
+  email = settings?.email ?? 'anjumanpanchgani@gmail.com',
 } = Astro.props;
 
-const navLinks =
-  settings?.navLinks && settings.navLinks.length > 0
-    ? settings.navLinks
-    : [
-        { label: 'Home', href: '/' },
-        { label: 'About', href: '/about' },
-        { label: 'Admissions', href: '/admission-requirements' },
-        { label: 'Contact', href: '/contact' },
-      ];
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  {
+    label: 'Admission',
+    children: [
+      { label: 'General Instructions for Parents', href: '/admission#general-instructions-for-parents' },
+      { label: 'Conditions for Admission', href: '/admission#conditions-for-admission' },
+      { label: 'Rules & Regulations', href: '/admission#rules-regulations' },
+      { label: 'List of Belongings', href: '/admission#list-of-belongings' },
+      { label: 'Fees Structure', href: '/admission#fees-structure' },
+      { label: 'Apply Now', href: '/admission#apply-now' },
+    ],
+  },
+  { label: 'News', href: '/newsletter' },
+  { label: 'Jr. College', href: '/junior-college' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const tickerNotices = [
+  "Admissions Open for Academic Year 2026–2027 (Pre-Primary to XII Science with NEET, JEE & MH-CET Coaching)",
+  "State Board Affiliated Residential Co-Ed Institution in Panchgani (Established 1920)",
+  `Admissions Contact: ${phone1} / ${phone2} | Email: ${email}`,
+];
 ---
 
-<header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-amber-700/30">
-  <div class="hidden sm:flex justify-end gap-6 px-6 py-1.5 text-xs text-slate-300 border-b border-slate-800">
-    {phone1 && <a href={`tel:${phone1}`} class="hover:text-amber-400">{phone1}</a>}
-    {phone2 && <a href={`tel:${phone2}`} class="hover:text-amber-400">{phone2}</a>}
-    {email && <a href={`mailto:${email}`} class="hover:text-amber-400">{email}</a>}
+<!-- 1. Top Announcement Bar (Midnight Navy #0d1b2a with Crimson Badge #8b1d2c) -->
+<div class="bg-[#0d1b2a] text-gray-200 h-9 flex items-center border-b border-[#1b263b] overflow-hidden text-xs">
+  <div class="bg-[#8b1d2c] text-white font-bold px-4 h-full flex items-center shrink-0 tracking-wider text-[11px] uppercase z-10 shadow-sm">
+    Announcements
   </div>
+  <div class="overflow-hidden whitespace-nowrap w-full relative">
+    <div class="ticker-content inline-block pl-full font-medium tracking-wide">
+      {tickerNotices.concat(tickerNotices).map((notice) => (
+        <span class="inline-block mr-12 text-gray-200">{notice}</span>
+      ))}
+    </div>
+  </div>
+</div>
 
-  <div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
-    <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo.webp" alt="Anjuman-I-Islam School crest" class="h-10 w-10 object-contain" onerror="this.style.display='none'" />
-      <span class="font-serif text-lg leading-tight text-white">
-        Anjuman-I-Islam<br />
-        <span class="text-xs font-sans text-amber-400 tracking-wide">Panchgani, since 1920</span>
-      </span>
+<!-- 2. Main Navigation Header (Clean White with Crimson #8b1d2c & Navy #0d1b2a accents) -->
+<header class="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+  <div class="max-w-[1280px] w-full mx-auto px-4 lg:px-6 py-3.5 flex items-center justify-between gap-6">
+    
+    <!-- Crest Logo & Brand Identity -->
+    <a href="/" class="flex items-center gap-3.5 shrink-0 group no-underline">
+      <img
+        src="/images/logo.webp"
+        alt="Anjuman-I-Islam Crest Logo"
+        width="56"
+        height="56"
+        class="w-12 h-12 sm:w-14 sm:h-14 object-contain shrink-0 group-hover:scale-105 transition-transform duration-200"
+        loading="eager"
+      />
+      <div class="flex flex-col items-start justify-center leading-none">
+        <strong class="font-serif text-xl sm:text-2xl font-black tracking-tight text-[#0d1b2a] group-hover:text-[#8b1d2c] transition-colors m-0 p-0 leading-none">
+          ANJUMAN-I-ISLAM
+        </strong>
+        <span class="text-[11px] sm:text-[11.5px] font-semibold text-gray-500 tracking-wide mt-1.5 whitespace-nowrap">
+          English Medium Co-Ed School in Panchgani
+        </span>
+      </div>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8">
-      {navLinks.map((link) => (
-        <a href={link.href} class="text-sm text-slate-200 hover:text-amber-400 transition-colors">
-          {link.label}
-        </a>
+    <!-- Desktop Navigation Menu -->
+    <nav class="hidden lg:flex items-center gap-7">
+      {navItems.map((item) => (
+        item.children ? (
+          <div class="relative group/dropdown py-2">
+            <button
+              type="button"
+              class="flex items-center gap-1.5 text-[14px] font-semibold text-gray-800 group-hover/dropdown:text-[#8b1d2c] transition-colors focus:outline-none cursor-pointer"
+              aria-haspopup="true"
+            >
+              <span>{item.label}</span>
+              <span class="text-[#8b1d2c] font-bold text-sm leading-none transition-transform duration-200 group-hover/dropdown:rotate-45">+</span>
+            </button>
+
+            <!-- Dropdown Container with Crimson Accent Top Border -->
+            <div class="invisible opacity-0 group-hover/dropdown:visible group-hover/dropdown:opacity-100 absolute top-full left-0 mt-1 w-64 bg-white border-t-2 border-[#8b1d2c] rounded-b-lg shadow-[0_12px_30px_rgba(13,27,42,0.12)] py-2 z-50 transition-all duration-200">
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class="block px-4 py-2.5 text-[13px] font-medium text-gray-700 hover:bg-red-50 hover:text-[#8b1d2c] transition-colors"
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class="text-[14px] font-semibold text-gray-800 hover:text-[#8b1d2c] transition-colors py-2 relative group/link"
+          >
+            {item.label}
+            <!-- Crimson indicator line on hover -->
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#8b1d2c] transition-all duration-200 group-hover/link:w-full"></span>
+          </a>
+        )
       ))}
-      <a href="/login" class="text-sm px-4 py-2 rounded border border-amber-600 text-amber-400 hover:bg-amber-600 hover:text-slate-900 transition-colors">
-        Staff Login
-      </a>
     </nav>
 
-    <button id="menu-toggle" class="md:hidden text-white" aria-label="Open menu">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
-      </svg>
-    </button>
+    <!-- Header Action Button: Pill-style Crimson Red Button -->
+    <div class="flex items-center gap-3 shrink-0">
+      <a
+        href="/admission#apply-now"
+        class="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-[13px] font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98]"
+      >
+        <span>Apply Now</span>
+        <span class="text-white">&rarr;</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden text-[#0d1b2a] p-2 hover:bg-gray-100 rounded-md transition-colors"
+        aria-label="Toggle Navigation"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <nav id="mobile-menu" class="hidden md:hidden flex-col gap-1 px-6 pb-4">
-    {navLinks.map((link) => (
-      <a href={link.href} class="block py-2 text-slate-200 hover:text-amber-400">{link.label}</a>
+  <!-- Mobile Drawer Menu -->
+  <nav id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white px-6 py-4 flex-col gap-1 shadow-xl max-h-[80vh] overflow-y-auto">
+    {navItems.map((item) => (
+      item.children ? (
+        <div class="border-b border-gray-100 pb-2">
+          <span class="block py-2 text-sm font-bold text-[#0d1b2a] flex items-center justify-between">
+            {item.label} <span class="text-[#8b1d2c] text-base font-bold">+</span>
+          </span>
+          <div class="pl-3 flex flex-col gap-1 border-l-2 border-[#8b1d2c] my-1">
+            {item.children.map((child) => (
+              <a href={child.href} class="py-1.5 text-xs font-medium text-gray-700 hover:text-[#8b1d2c] transition-colors">
+                {child.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={item.href} class="py-2.5 text-sm font-semibold text-gray-800 hover:text-[#8b1d2c] border-b border-gray-100 last:border-b-0 transition-colors">
+          {item.label}
+        </a>
+      )
     ))}
-    <a href="/login" class="block py-2 text-amber-400">Staff Login</a>
+    
+    <div class="pt-4 pb-2 flex flex-col gap-2.5">
+      <a 
+        href="/admission#apply-now" 
+        class="text-center py-2.5 text-sm font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full shadow transition-colors"
+      >
+        Apply Now &rarr;
+      </a>
+      <a 
+        href="/login" 
+        class="text-center py-2 text-xs font-semibold text-gray-500 hover:text-[#0d1b2a] transition-colors"
+      >
+        Staff Login
+      </a>
+    </div>
   </nav>
 </header>
+
+<style>
+  .pl-full {
+    padding-left: 100%;
+  }
+
+  .ticker-content {
+    animation: marqueeTicker 32s linear infinite;
+  }
+
+  .ticker-content:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marqueeTicker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
 
 <script>
   const btn = document.getElementById('menu-toggle');

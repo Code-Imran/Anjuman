@@ -2,76 +2,301 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FloatingSocial from '../components/FloatingSocial.astro';
 
-const contactPhone1 = "8275204302";
-const contactPhone2 = "8275205404";
-const contactEmail = "anjumanpanchgani@gmail.com";
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
+
+const visionPillars = [
+  {
+    title: "Inclusivity and Diversity",
+    desc: "A warm, welcoming co-educational environment open to students of all backgrounds.",
+  },
+  {
+    title: "Global Perspective",
+    desc: "Instilling broad international outlooks alongside deep-rooted moral values and character.",
+  },
+  {
+    title: "Community and Relationships",
+    desc: "A tight-knit residential family fostering lifelong camaraderie, mentorship, and mutual respect.",
+  },
+  {
+    title: "Lifelong Learning",
+    desc: "Cultivating intrinsic intellectual curiosity and critical thinking that endures beyond the classroom.",
+  },
+];
+
+const reviews = [
+  {
+    author: "Huzefa Attar",
+    badge: "Alumnus",
+    comment: "Proud to be an Anjumanite. The best and one of the oldest schools in Panchgani, with strong academics, great teachers, a campus Masjid, and moral education.",
+  },
+  {
+    author: "Sabbir Adam",
+    badge: "Alumnus",
+    comment: "Attended from 1977 to 1979. It was truly the best time of my life—a place where I made cherished memories that remain unforgettable.",
+  },
+  {
+    author: "Haaris Khan",
+    badge: "Hostel Student",
+    comment: "The teachers explain concepts thoroughly and make learning engaging. The boarding hostel environment is caring, safe, and supportive.",
+  },
+];
+
+const campusFacilities = [
+  "Modern Classrooms",
+  "Junior College Wing (Science & Commerce)",
+  "Secondary Academic Block",
+  "Science Laboratories",
+  "Robotics & AI Lab",
+  "Astronomy Club",
+  "Aviation Training Ground",
+  "Cricket Stadium",
+  "Sports & Athletics Arena",
+  "Equestrian Horse Riding Track",
+  "Volleyball & Basketball Courts",
+  "Campus Auditorium",
+  "Boarding Hostels & Dormitories",
+  "Campus Mosque",
+  "Agriculture & Gardening Plots",
+];
 ---
 
 <BaseLayout
-  title="About Us | Anjuman-I-Islam Public School & Jr. College"
-  description="Learn about Anjuman-I-Islam Public School and Jr. College in Panchgani."
+  title="About Us | Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="Discover the history, vision, mission, and century-old educational legacy of Anjuman-I-Islam Public School & Jr. College across 174 scenic acres in Panchgani."
 >
-  <Header phone1={contactPhone1} phone2={contactPhone2} email={contactEmail} />
+  <Header phone1={phone1} phone2={phone2} email={email} />
 
-  <main class="mx-auto w-full max-w-5xl px-6 py-16">
-    <div class="max-w-3xl">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">Our story</p>
-      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Anjuman-I-Islam</h1>
-      <p class="mt-6 text-xl leading-8 text-slate-300">
-        Education goes beyond textbooks and classrooms. We empower students to explore their passions,
-        challenge conventions, and discover their potential through meaningful experiences.
+  <!-- Hero Header (Crimson Brand Accent) -->
+  <section class="w-full bg-[#8b1d2c] border-b border-[#721522] py-16 md:py-24 text-center relative overflow-hidden text-white">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-red-100 bg-white/10 border border-white/20 px-3.5 py-1 rounded-full mb-4">
+        Established 1920 &bull; Panchgani
+      </span>
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+        A Century of Educational Excellence
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-red-100 max-w-2xl mx-auto leading-relaxed font-light">
+        Empowering young minds across 174 sprawling acres in the Western Ghats through holistic academics, dedicated faculty, and vibrant boarding life.
       </p>
     </div>
+  </section>
 
-    <div class="mt-14 grid gap-8 md:grid-cols-[minmax(0,1fr)_18rem]">
-      <article class="space-y-8 text-base leading-8 text-slate-300">
-        <section>
-          <h2 class="mb-3 text-2xl font-semibold text-white">A place to grow</h2>
-          <p>
-            Anjuman-I-Islam Public School and Jr. College offers a supportive learning environment where
-            academic excellence meets character, curiosity, and confidence. Our faculty guide students with
-            care while connecting classroom learning to the world beyond school.
-          </p>
-          <p class="mt-4">
-            Based in Panchgani, Maharashtra, our community is committed to helping every student build a
-            strong foundation for further study, meaningful work, and responsible citizenship.
-          </p>
+  <main class="bg-[#fcfdfd] py-14 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
+
+      <!-- Vision & Mission Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <!-- Vision Card -->
+        <section class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] bg-red-50 border border-red-100 px-3 py-1 rounded-full">
+                Institutional Aim
+              </span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#8b1d2c]"></span>
+            </div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight mb-4">
+              Our Vision
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              To cultivate a dynamic learning community within our boarding school where every student is empowered to explore, discover, and excel. We envision a nurturing environment that fosters academic excellence, character development, and global citizenship. Our commitment is to inspire a lifelong love of learning and prepare students to thrive in an ever-changing world.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Anjuman Vision Statement</span>
+          </div>
         </section>
 
-        <section>
-          <h2 class="mb-3 text-2xl font-semibold text-white">Our mission</h2>
-          <p>
-            To provide transformative education that develops critical thinking, creativity, compassion, and
-            character, equipping every student with the knowledge and values needed to contribute meaningfully
-            to society.
+        <!-- Mission Card -->
+        <section class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
+              <span class="text-xs font-bold uppercase tracking-widest text-[#0d1b2a] bg-slate-100 border border-slate-200 px-3 py-1 rounded-full">
+                Our Commitment
+              </span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#0d1b2a]"></span>
+            </div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#0d1b2a] tracking-tight mb-4">
+              Our Mission
+            </h2>
+            <div class="space-y-3.5 text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                At Anjuman-I-Islam Public School &amp; Jr. College Panchgani, our mission is to provide a transformative education that goes beyond the classroom. We strive to create a holistic learning environment that nurtures intellectual curiosity, creativity, and personal growth.
+              </p>
+              <p>
+                Our dedicated faculty and staff are committed to fostering a sense of community, instilling values of integrity and compassion, and preparing students for success in higher education and beyond through rigorous academics, diverse extracurricular activities, and a supportive boarding experience.
+              </p>
+            </div>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Anjuman Mission Statement</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Guiding Foundations / 4 Pillars -->
+      <section class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-10 shadow-sm">
+        <div class="max-w-2xl mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-1.5">
+            Guiding Principles
+          </span>
+          <h3 class="font-serif text-2xl font-bold text-[#0d1b2a] tracking-tight">
+            Pillars of Our Educational Philosophy
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            Our vision and mission are built upon four fundamental considerations:
           </p>
-        </section>
-
-        <section>
-          <h2 class="mb-4 text-2xl font-semibold text-white">What sets us apart</h2>
-          <ul class="grid gap-3 sm:grid-cols-2">
-            <li class="border-l-2 border-amber-400 pl-4">Dedicated teachers and personal guidance</li>
-            <li class="border-l-2 border-amber-400 pl-4">Learning that connects theory to practice</li>
-            <li class="border-l-2 border-amber-400 pl-4">A welcoming, inclusive school community</li>
-            <li class="border-l-2 border-amber-400 pl-4">Opportunities for creativity and leadership</li>
-          </ul>
-        </section>
-      </article>
-
-      <aside class="h-fit border border-slate-800 bg-slate-900/70 p-6">
-        <h2 class="text-lg font-semibold text-white">Explore Anjuman</h2>
-        <div class="mt-5 grid gap-3 text-sm">
-          <a class="text-amber-300 hover:text-amber-200" href="/">Return to home <span aria-hidden="true">-&gt;</span></a>
-          <a class="text-amber-300 hover:text-amber-200" href="/admission-requirements">Admissions <span aria-hidden="true">-&gt;</span></a>
-          <a class="text-amber-300 hover:text-amber-200" href="/contact">Contact us <span aria-hidden="true">-&gt;</span></a>
         </div>
-      </aside>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {visionPillars.map((p, idx) => (
+            <div class="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 hover:border-slate-300 transition-colors">
+              <span class="text-xs font-mono font-bold text-[#8b1d2c] block">0{idx + 1}</span>
+              <h4 class="font-bold text-base text-[#0d1b2a] mt-1">{p.title}</h4>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Why Us? Section -->
+      <section class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block">
+              The Boarding Experience
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0d1b2a] tracking-tight leading-snug">
+              Why Choose Us?
+            </h2>
+            <div class="w-12 h-1 bg-[#8b1d2c] rounded-full"></div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Nestled in a peaceful hill station, our students thrive as part of a close-knit community focused on personalized guidance, academic mastery, and physical vitality.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+            <p>
+              At Anjuman-I-Islam Public School &amp; Jr. College, Panchgani, academic progress is a core commitment. As the school year unfolds, teachers, advisors, and administrators work collaboratively to ensure every student thrives in their scholastic pursuits.
+            </p>
+            <p>
+              Outside of the classroom, academic advisors meet regularly with students to set measurable goals, track milestones, and offer one-on-one mentorship. Leadership continuously monitors academic performance, using structured feedback to implement timely, targeted academic interventions.
+            </p>
+            <p>
+              Our holistic approach combines a caring residential environment with rigorous preparation for academics, competitive entrance examinations, and sports—setting every student on an enduring path to success while keeping personal well-being paramount.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Brief History & Campus Heritage -->
+      <section class="bg-white rounded-3xl border border-slate-200/80 p-7 sm:p-12 shadow-sm">
+        <div class="max-w-3xl mx-auto text-center mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+            100+ Years Of Heritage
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0d1b2a] tracking-tight">
+            Brief History &amp; Campus Heritage
+          </h2>
+        </div>
+
+        <div class="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-4xl mx-auto">
+          <p>
+            Anjuman-I-Islam Public School &amp; Jr. College, Panchgani spans 174 acres of verdant mountain terrain, home to diverse regional flora and fauna that beautifies the historic campus. Along with primary and secondary schooling and our Junior College (offering Science and Commerce streams), we provide coaching for NEET, JEE, MH-CET, and NATA. Dedicated academic assistance is thoughtfully extended to students from vernacular medium backgrounds needing structured bridge training.
+          </p>
+          <p>
+            To keep learning engaging and future-focused, we integrate cutting-edge experiential modules including Robotics, Agriculture, and Basic Aviation courses alongside cherished heritage activities such as equestrian horse riding, pottery, and archery.
+          </p>
+          <p>
+            With more than a century of providing distinguished education, Anjuman Public School Panchgani continues to foster global citizenship, academic excellence, and integrity in every child.
+          </p>
+        </div>
+
+        <!-- Campus Facilities Strip -->
+        <div class="mt-12 pt-8 border-t border-slate-100 max-w-4xl mx-auto">
+          <span class="block text-xs font-bold uppercase tracking-widest text-[#0d1b2a] text-center mb-5">
+            Campus Infrastructure &amp; Facilities
+          </span>
+          <div class="flex flex-wrap items-center justify-center gap-2.5">
+            {campusFacilities.map((facility) => (
+              <span class="text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full shadow-xs hover:border-slate-300 transition-colors">
+                {facility}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials / Community Voices -->
+      <section>
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#8b1d2c] block mb-2">
+            Voices From Our Community
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#0d1b2a] tracking-tight">
+            Reflections &amp; Reviews
+          </h2>
+          <p class="mt-2 text-xs sm:text-sm text-slate-500">
+            What students, alumni, and parents value most about their journey at Panchgani.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {reviews.map((r) => (
+            <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center justify-between mb-3 text-xs">
+                  <span class="font-bold text-[#8b1d2c] bg-red-50 border border-red-100 px-2.5 py-0.5 rounded-full">
+                    {r.badge}
+                  </span>
+                  <span class="text-amber-500 font-bold tracking-widest">★★★★★</span>
+                </div>
+                <p class="text-sm text-slate-600 italic leading-relaxed">
+                  &ldquo;{r.comment}&rdquo;
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100">
+                <span class="font-bold text-sm text-[#0d1b2a]">{r.author}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Admissions CTA Banner -->
+      <section class="bg-[#0d1b2a] text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-sm border border-slate-800">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-red-200 bg-white/10 border border-white/15 px-3.5 py-1 rounded-full mb-3">
+          Admissions Open: Class I to XII (Science &amp; Commerce)
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
+          Academic Session 2026&ndash;2027
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed font-light">
+          Your search for a leading residential school ends here. Schedule a personalized campus visit with our Admissions Coordinator today.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-3.5 text-xs sm:text-sm font-bold text-white bg-[#8b1d2c] hover:bg-[#721522] rounded-full transition-all duration-200 shadow-sm hover:shadow active:scale-[0.98]"
+          >
+            <span>Get in Touch Now</span>
+            <span class="ml-1.5">&rarr;</span>
+          </a>
+          <a
+            href={`tel:${phone1}`}
+            class="inline-flex items-center justify-center px-7 py-3.5 text-xs sm:text-sm font-semibold text-slate-200 border border-slate-700 hover:bg-slate-800 rounded-full transition-colors active:scale-[0.98]"
+          >
+            Call Admissions: {phone1}
+          </a>
+        </div>
+      </section>
+
     </div>
   </main>
 
-  <Footer phone1={contactPhone1} phone2={contactPhone2} email={contactEmail} />
-
-  <FloatingSocial phone={contactPhone1} />
+  <Footer phone1={phone1} phone2={phone2} email={email} />
 </BaseLayout>

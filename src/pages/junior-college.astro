@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const phone1 = "8275204302";
+const phone2 = "8275205404";
+const email = "anjumanpanchgani@gmail.com";
+
+const scienceExams = [
+  {
+    title: "NEET",
+    subtitle: "National Eligibility cum Entrance Test",
+    desc: "Rigorous coaching by experienced faculty, comprehensive study materials and practice tests, and personalized guidance through regular doubt-solving sessions.",
+  },
+  {
+    title: "JEE",
+    subtitle: "Joint Entrance Examination",
+    desc: "Specialized coaching for engineering entrance exams, mock tests and strategic preparation techniques, with regular updates on exam patterns and syllabus changes.",
+  },
+  {
+    title: "NATA",
+    subtitle: "National Aptitude Test in Architecture",
+    desc: "An expert faculty team builds deep understanding of the exam pattern, content, and effective teaching methodologies across drawing, aptitude, and mathematics.",
+  },
+];
+
+const scienceFeatures = [
+  {
+    title: "Comprehensive Study Material",
+    desc: "Structured resources covering every section of the entrance exams, from core theory to applied problem-solving.",
+  },
+  {
+    title: "Personalized Coaching and Feedback",
+    desc: "Committed to individualized attention, with more one-on-one interaction between students and instructors.",
+  },
+  {
+    title: "Expert Faculty",
+    desc: "A dedicated team of highly experienced and qualified teachers providing unparalleled guidance in the sciences.",
+  },
+  {
+    title: "Library",
+    desc: "A well-stocked library with reference materials, journals, and textbooks to deepen scientific understanding.",
+  },
+  {
+    title: "Science Laboratories",
+    desc: "Modern labs equipped with the latest technology, giving students hands-on experience in practical applications.",
+  },
+  {
+    title: "IT Lab",
+    desc: "An advanced computing lab where students build technical skills and stay current with digital tools.",
+  },
+];
+---
+
+<BaseLayout
+  title="Junior College | Anjuman-I-Islam Public School & Jr. College, Panchgani"
+  description="Std XI & XII Science and Commerce coaching for NEET, JEE, NATA, and competitive exams at Anjuman-I-Islam Public School & Jr. College, Panchgani."
+>
+  <Header phone1={phone1} phone2={phone2} email={email} />
+
+  <!-- Hero Header -->
+  <section class="bg-[#0f2b1d] border-b border-[#1a4230] py-16 md:py-24 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#f7d070] bg-white/[0.08] border border-white/10 px-3 py-1 rounded mb-3">
+        Established 1920 &bull; Panchgani
+      </span>
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Junior College
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Empowering higher secondary students with comprehensive coaching, personalized mentoring, and modern academic infrastructure.
+      </p>
+    </div>
+  </section>
+
+  <main class="bg-[#f8faf9] py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6 space-y-16">
+
+      <!-- Std XI, XII Science -->
+      <div class="bg-white border-2 border-[#103020] p-8 sm:p-12 shadow-[0_8px_24px_rgba(16,48,32,0.06)]">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#c28b1e] bg-[#c28b1e]/10 px-3 py-1 rounded inline-block mb-3">
+          Regular &amp; Repeater Batch
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-[#103020] tracking-tight mb-8">
+          Std XI, XII Science
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {scienceExams.map((exam) => (
+            <div class="border-l-2 border-[#c28b1e] pl-4 py-1">
+              <h3 class="font-serif text-base font-bold text-[#103020]">{exam.title}</h3>
+              <p class="text-xs font-semibold text-gray-500 mt-0.5 mb-2">{exam.subtitle}</p>
+              <p class="text-sm text-gray-700 leading-relaxed">{exam.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Why Pursue XI/XII Science -->
+      <div class="bg-white border-2 border-[#103020] p-8 sm:p-12 shadow-[0_8px_24px_rgba(16,48,32,0.06)]">
+        <div class="max-w-2xl mb-10">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#c28b1e] bg-[#c28b1e]/10 px-3 py-1 rounded inline-block mb-2">
+            The Science Program
+          </span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-[#103020] tracking-tight">
+            Why Pursue Science With Us?
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {scienceFeatures.map((f) => (
+            <div class="border-l-2 border-[#c28b1e] pl-4 py-1">
+              <h3 class="font-serif text-base font-bold text-[#103020]">{f.title}</h3>
+              <p class="text-sm text-gray-600 mt-1.5 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Std XI, XII Commerce -->
+      <div class="bg-white border-2 border-[#103020] p-8 sm:p-12 shadow-[0_8px_24px_rgba(16,48,32,0.06)]">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[#9b1b2e] bg-[#9b1b2e]/10 px-3 py-1 rounded inline-block mb-3">
+          Commerce Stream
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-[#103020] tracking-tight mb-1">
+          Std XI, XII Commerce
+        </h2>
+        <p class="text-sm font-semibold text-gray-500 mb-6">
+          With preparation for competitive exams
+        </p>
+        <div class="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed text-justify max-w-4xl">
+          <p>
+            Preparing for competitive exams while studying commerce opens doors to prestigious institutions and lucrative career opportunities. It sharpens analytical skills, critical thinking, and subject knowledge that are vital for success in competitive fields.
+          </p>
+          <p>
+            A strong foundation built through exam preparation keeps students ahead in a competitive job market and equips them with the tools needed to achieve their academic and professional aspirations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Faculty and Staff -->
+      <div class="bg-white border-2 border-[#103020] p-8 sm:p-12 shadow-[0_8px_24px_rgba(16,48,32,0.06)]">
+        <h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-[#103020] tracking-tight mb-6">
+          Faculty and Staff
+        </h2>
+        <div class="space-y-5 text-sm sm:text-base text-gray-700 leading-relaxed text-justify max-w-4xl">
+          <p>
+            The faculty and staff are not just educators; they are mentors, role models, and pillars of support for every student. With a deep commitment to academic excellence and personal development, the team at Anjuman-I-Islam Public School &amp; Jr. College, Panchgani goes above and beyond to help each student thrive. In the classrooms, teachers with a genuine passion for their subjects lead lively discussions, hands-on activities, and thought-provoking lectures.
+          </p>
+          <div class="border-l-2 border-[#c28b1e] pl-4 py-1">
+            <p class="text-gray-700">
+              In the dormitories, the dorm in charge provides a caring and supportive presence, offering guidance, advice, and a listening ear.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admissions CTA Banner -->
+      <div class="bg-[#103020] border-2 border-[#c28b1e] p-8 sm:p-12 text-center text-white relative overflow-hidden shadow-xl">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#f7d070] bg-white/[0.08] border border-white/10 px-3 py-1 rounded mb-3">
+          Admissions Open: Junior College (Science &amp; Commerce)
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-3">
+          Academic Session 2026&ndash;2027
+        </h2>
+        <p class="text-sm sm:text-base text-slate-200 max-w-xl mx-auto mb-8 leading-relaxed">
+          Start your higher education journey at Anjuman Public School, Panchgani. Limited seats are available.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#9b1b2e] hover:bg-[#7a1524] rounded-none transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+          >
+            Contact Us &rarr;
+          </a>
+          <a
+            href={`tel:${phone1}`}
+            class="px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white border border-white/30 hover:bg-white/10 transition-colors rounded-none"
+          >
+            Call Admissions: {phone1}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer phone1={phone1} phone2={phone2} email={email} />
+</BaseLayout>
