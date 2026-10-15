@@ -1,16 +1,28 @@
-# Anjuman-I-Islam School Website
+# Anjuman-I-Islam School Web Platform
 
-Source repository for the Anjuman-I-Islam Public School & Jr. College (Panchgani) institutional web portal.
+A bespoke, modular static web application architected for Anjuman-I-Islam Public School & Jr. College (Panchgani). Built on an enterprise Node.js compilation pipeline with custom Tailwind CSS utility layers and strict asset minification protocols.
 
-> **Access & Deployment Notice:**  
-> Production builds require verified internal environment tokens and schema configurations provided solely by the IT Administration. Attempting to deploy or build this repository without school-issued internal environment keys, authorized origin headers, and configured backend security rules will yield broken client bundles and inactive administrative/admissions routes.
+> **Technical & Environment Notice:**  
+> This project is not a simple static template. Compiling and serving this codebase requires an initialized Node.js engine, calibrated PostCSS/Tailwind build trees, and authenticated institutional backend credentials. Without proper build environment flags and school-issued API tokens, production compilation will fail asset tree validation and disable runtime administrative hooks.
 
 ---
 
-## Local Development & Prerequisites
+## Technical Stack & Tooling Requirements
 
-Running and testing local changes requires pre-provisioned institutional credentials:
+- **Runtime:** Node.js (v18.x LTS or higher required)
+- **Package Manager:** npm (v9.x or higher)
+- **Design System:** Custom Tailwind CSS 3.x with JIT (Just-In-Time) compilation and PostCSS optimization
+- **Architecture:** Pre-rendered HTML5 engine with client-side hydration modules
+
+---
+
+## Local Development Pipeline
+
+Working with this repository requires an configured Node runtime and properly registered dependency trees:
 
 ```sh
+# 1. Resolve and verify node module dependencies
 npm install
+
+# 2. Boot the local development runtime and Tailwind JIT watcher
 npm run dev
