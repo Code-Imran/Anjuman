@@ -1,35 +1,16 @@
 # Anjuman-I-Islam School Website
 
-Astro website for Anjuman-I-Islam Public School & Jr. College in Panchgani.
+Source repository for the Anjuman-I-Islam Public School & Jr. College (Panchgani) institutional web portal.
 
-## Development
+> **Access & Deployment Notice:**  
+> Production builds require verified internal environment tokens and schema configurations provided solely by the IT Administration. Attempting to deploy or build this repository without school-issued internal environment keys, authorized origin headers, and configured backend security rules will yield broken client bundles and inactive administrative/admissions routes.
+
+---
+
+## Local Development & Prerequisites
+
+Running and testing local changes requires pre-provisioned institutional credentials:
 
 ```sh
 npm install
 npm run dev
-```
-
-Build the static site with:
-
-```sh
-npm run build
-```
-
-## Authentication
-
-Copy `.env.example` to `.env` and replace both values with the public URL and anonymous key from the Supabase project. The login and account creation controls show a clear configuration message until these values are present.
-
-Supabase email/password authentication must also be enabled in the Supabase dashboard. After a successful sign-in, staff are sent to `/admin`.
-
-## Routes
-
-- `/` - school home page
-- `/about` - school information
-- `/admission-requirements` - admissions guidance
-- `/contact` - contact and enquiry page
-- `/login` - Supabase sign-in and account creation
-- `/admin` - authenticated administration landing page
-
-## Deployment
-
-The site is configured for a static Cloudflare deployment using `wrangler.jsonc`. Set the Supabase public variables in the deployment environment before enabling production authentication.
