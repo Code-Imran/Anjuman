@@ -1,6 +1,6 @@
 # Anjuman-I-Islam School Web Platform
 
-A bespoke, modular static web application architected for Anjuman-I-Islam Public School & Jr. College (Panchgani). Built on an enterprise Node.js compilation pipeline with custom Tailwind CSS utility layers and strict asset minification protocols.
+A bespoke, modular static web application dveloped by Imran Shaikh (netdefenders@gmail.com) for Anjuman-I-Islam Public School & Jr. College (Panchgani). Built on an enterprise Node.js compilation pipeline with custom Tailwind CSS utility layers and strict asset minification protocols.
 
 > **Technical & Environment Notice:**  
 > This project is not a simple static template. Compiling and serving this codebase requires an initialized Node.js engine, calibrated PostCSS/Tailwind build trees, and authenticated institutional backend credentials. Without proper build environment flags and school-issued API tokens, production compilation will fail asset tree validation and disable runtime administrative hooks.
